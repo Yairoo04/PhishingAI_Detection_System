@@ -1,0 +1,385 @@
+2025-06-24 06:42:01,976 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 06:42:01,977 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 06:42:05,039 - INFO - 192.168.1.195 - - [24/Jun/2025 06:42:05] "[36mGET / HTTP/1.1[0m" 304 -
+2025-06-24 06:42:05,069 - INFO - 192.168.1.195 - - [24/Jun/2025 06:42:05] "[36mGET /static/js/main.cb55ca4f.js HTTP/1.1[0m" 304 -
+2025-06-24 06:42:05,072 - INFO - 192.168.1.195 - - [24/Jun/2025 06:42:05] "[36mGET /static/css/main.2fbccaf0.css HTTP/1.1[0m" 304 -
+2025-06-24 06:42:09,138 - INFO - Trích xuất headers: {'Delivered-To': 'n22dcat019@student.ptithcm.edu.vn', 'Received': 'from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])        by mx.google.com with SMTPS id ffacd0b85a97d-3a095a8bfb4sor2922472f8f.9.2025.05.06.01.52.23        for <d22cqat01-n@student.ptithcm.edu.vn>        (Google Transport Security);        Tue, 06 May 2025 01:52:23 -0700 (PDT)', 'X-Forwarded-Encrypted': 'i=1; AJvYcCWCgs/3M8JQWbuejt51k/GxGAsL51G+m2hBOhaGIsHQ9/LbWWkzclUHAaS4N07aDgJjF1dNlN13QKV7XQ==@student.ptithcm.edu.vn', 'X-Received': 'by 2002:a05:6000:1a8b:b0:391:10c5:d1a9 with SMTP id ffacd0b85a97d-3a0ac0eb10amr1750636f8f.31.1746521542105; Tue, 06 May 2025 01:52:22 -0700 (PDT)', 'ARC-Seal': 'i=1; a=rsa-sha256; t=1746521543; cv=none;        d=google.com; s=arc-20240605;        b=aUkHKeHb+2p0BdWr6B5bwLJKTtar6gm4lfoWQFUAixlk9Uz382S2LCOez9J1Ab+YYi         NDxsg8gB4q+LZxklzZEyxYBf1mlLn9lTxbPChIyt6Il/NiIPdf9lYLVIWflNxC4VL35U         QNs9zha9FZx5KYzdyABC0fYFLV8uqcw/4os43I8niuaYKqrzPA7g8vDy41ND4WVqensz         1mKcAI5rFyAL0IZ8ktwC2piBeGRmyEWmYVHZwieUhOpLWqbnEWsLYXHkHqZHpMM/Bjt6         j/PRrySuQ2JpoJiu3wQhowMJ36d1puiI5Dt8ZtxGmaiCGVG4w2vv+KDF5jgHA49OfcLH         E2uw==', 'ARC-Message-Signature': 'i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;        h=to:subject:message-id:date:from:mime-version:dkim-signature;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        fh=dcQbx2GER3DEfqTPBbuzrfyhpJJnPi+NOJYzhd+1Hco=;        b=Z95CXwnjnyfw1TiiHE1kZCSi4XskjFD+ENB0cMAdIkgCNO3eiRq5T6f2zMyo4eLOgJ         9cbQgqCvkIrlMCTE73O/LljV7AEgxTHk2k48HzLcZC3KeQi9YZkHsppRtkfYr+ixxEjT         /TSJJGj5DKMwLj0v6ankWVF0uQlv2KsmnW/83XAOB5PPA47n3CCFxEk4cnvvmVmYKfr8         xTSaNmz9HZmtJALzoYQVhvWsA4Wi9sBT+irjvNeOJ9FQe+4rNf0TfJ60WsKEgumAApUt         1PEdUMYtcFbKb0bfOY+uj1zO2VQe25GdYhYPfSHiGNvB/+R7jrHwpSg0UIa3DwfYVBXu         QFLA==;        dara=google.com', 'ARC-Authentication-Results': 'i=1; mx.google.com;       dkim=pass header.i=@ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=WoXrISC5;       spf=none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=pctsv@ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'Return-Path': '<d22cqat01-n+bncBCO7XOPBF4IMTG7HYADBUBHHZ5PQU@student.ptithcm.edu.vn>', 'Received-SPF': 'none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) client-ip=209.85.220.41;', 'Authentication-Results': 'mx.google.com;       dkim=pass header.i=@student-ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=PUiSzgI0;       arc=pass (i=2 dkim=pass dkdomain=ptithcm-edu-vn.20230601.gappssmtp.com);       spf=none (google.com: d22cqat01-n+bncbco7xopbf4imtg7hyadbubhhz5pqu@student.ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=d22cqat01-n+bncBCO7XOPBF4IMTG7HYADBUBHHZ5PQU@student.ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'DKIM-Signature': 'v=1; a=rsa-sha256; c=relaxed/relaxed;        d=student-ptithcm-edu-vn.20230601.gappssmtp.com; s=20230601; t=1746521546; x=1747126346; darn=student.ptithcm.edu.vn;        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post         :list-id:mailing-list:precedence:x-original-authentication-results         :x-original-sender:to:subject:message-id:date:from:mime-version:from         :to:cc:subject:date:message-id:reply-to;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        b=PUiSzgI0E/PisrM3eIKG1sgKtDrvr2w4/VbvWkQGBScYDhDi+ZYo+c3T5H9FfP0czF         AvVvIqXz1q74XyX6LmpHZ3p8Yd9Rj5v1iZyKYvaeNeqCfaOkwHeJ721Y/RJL+GZvHYPu         bY0hTQRSBR/bp2f0//dH5uLqYEVbthqLG4bn+qPXcnwAOjrJpRsvgm0q4ZMIOgRS6Jrd         6ypxnmQx+W7NBKeMvey2WpS3VJaK0Cdqg5kgeY4Lw9ELQRc/kVXHgHlmpQkcUMvOmzJP         qmK+NfkrpAn8DiuaRtjSfa32IUJ1AB24Ei9j0m5G2ZXq1pxk6gf3wf3L476azf9B6+w7         N8UA==', 'X-Google-DKIM-Signature': 'v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20230601; t=1746521546; x=1747126346;        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post         :x-spam-checked-in-group:list-id:mailing-list:precedence         :x-original-authentication-results:x-original-sender:to:subject         :message-id:date:from:mime-version:x-beenthere:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        b=b3gwudcjGKONnkTteBaSFPbJc9Rx5M3Aq9iYT86EzppyfLDR7pkcrELpKMJIOv9tER         fsqtciDth8qZrNPiNTHcRozi3glAtLCfRyshhBaPFvbMZcbpzWZZKMOmnuWwdaV3Qf5q         fpOhQ8Iprm/B/y5dkCrVpmSqDyi6G9gA7qB1iowHK2A/nXjMU089heK6Z8+66M0VCTHj         tvtCXwPThejrQupk8kuV5isn0klI6mIkAVdXkVKOut230zBca3nzPwKlNNzIgqoXKj9g         VOjwxAHVgS1c+9D9mN9O9evXPioHh29VxemmRmmJKLx6jqx6JJc2JzyR70ZIV7W5y5ty         Ekrw==', 'X-Gm-Message-State': 'AOJu0Yy7IH/kwhbJL2tANp4kq5PGko7s2+MDafNpl+iJFhkfcLlRXcF4\teukgYkTjdZHXo7+3CAL7XaAsYzPsCcWXhJS1kvhDTOurP3bldNuGNBeyJXUrfyl4pA==', 'X-Google-Smtp-Source': 'AGHT+IEmOKWf40jAr/0Es0qgRnDS7pt1RW/HQu3hILV5ZOgoF7PqCTUPC5de8erqrfrw7I3dJphdNQ==', 'X-BeenThere': 'd22cqat01-n@student.ptithcm.edu.vn; h=AVT/gBFn3aZPK7c/DtozeKqe3eDLtthvIUCFfbFLNeu2v0Cr5A==', 'X-Gm-Gg': 'ASbGncu1GDsiEGppvH1riwHuxZz5Zi4SrNjZ6AyDMx2zNuCTDIcAzrHCh1YbVQjEYUx\t7rvzG+vzr8H9+0vL8bj+CapXgjSzE0zlEPoKby8KNnXcpkGHCUlVPSaqEVjtBh/fLWk/2dLmkgP\tf1jMjFwflOMni97DnbCHnwI+cNYAg/ybA=', 'MIME-Version': '1.0', 'From': '"(CTSV) Phong cong tac sinh vien" <pctsv@ptithcm.edu.vn>', 'Date': 'Tue, 06 May 2025 15:52:11 +0700', 'X-Gm-Features': 'ATxdqUF3GLd73X4q7rEAieRh7ndTDxAyIi-54LVEId9003Btn9ctHOahQ7vpS9Y', 'Message-ID': '<CACAgaDBj-H5biQvYfmQYeYG2Ogmqbs2wc7RWa2orTMjqaw-D6Q@mail.gmail.com>', 'Subject': 'Re: C? h?i ngo?i kh?a cho h?c sinh, sinh vi?n Vi?t Nam', 'To': 'd24cqvt01-n@student.ptithcm.edu.vn', 'Content-Type': 'multipart/alternative; boundary="0000000000001c2ce4063473bc02"', 'Bcc': 'd22cqat01-n@student.ptithcm.edu.vn', 'X-Original-Sender': 'pctsv@ptithcm.edu.vn', 'X-Original-Authentication-Results': 'mx.google.com;       dkim=pass header.i=@ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=WoXrISC5;       spf=none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=pctsv@ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'Precedence': 'list', 'Mailing-list': 'list d22cqat01-n@student.ptithcm.edu.vn; contact d22cqat01-n+owners@student.ptithcm.edu.vn', 'List-ID': '<d22cqat01-n.student.ptithcm.edu.vn>', 'X-Spam-Checked-In-Group': 'd22cqat01-n@student.ptithcm.edu.vn', 'X-Google-Group-Id': '134060503702', 'List-Post': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/post>, <mailto:d22cqat01-n@student.ptithcm.edu.vn>', 'List-Help': '<https://support.google.com/a/student.ptithcm.edu.vn/bin/topic.py?topic=25838>, <mailto:d22cqat01-n+help@student.ptithcm.edu.vn>', 'List-Archive': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/>', 'List-Subscribe': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/subscribe>, <mailto:d22cqat01-n+subscribe@student.ptithcm.edu.vn>', 'List-Unsubscribe': '<mailto:googlegroups-manage+134060503702+unsubscribe@googlegroups.com>, <https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/subscribe>'}
+2025-06-24 06:42:09,145 - INFO - Trích xuất đặc trưng email: {'hops': 4, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 0, 'missing_received-spf': 0, 'missing_reply-to': 1, 'str_from_chevron': 1, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return_path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 56, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 1, 'span_time': 0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 1, 'number_replies': 0}
+2025-06-24 06:42:09,146 - ERROR - Không thể tải mô hình random_forest_email_pickle: Tệp mô hình ../models\random_forest_email.pkl không tồn tại
+2025-06-24 06:42:09,147 - ERROR - Lỗi không xác định khi xử lý tệp .eml Co_hoi_ngoai_khoa_cho_hoc_sinh_sinh_vien_Viet_Nam.eml: Tệp mô hình ../models\random_forest_email.pkl không tồn tại
+2025-06-24 06:42:09,147 - INFO - 192.168.1.195 - - [24/Jun/2025 06:42:09] "[35m[1mPOST /api/email/predict HTTP/1.1[0m" 500 -
+2025-06-24 06:42:20,520 - INFO - Trích xuất headers: {'Return-Path': '<LifeQuotes104@yahoo.com>', 'Delivered-To': 'yyyy@netnoteinc.com', 'Received': 'from Life 300(113.2.2.1) Life1 by    sdn-ar-002riprovP318.dialsprint.net with ESMTP; Tue, 26 Jun 2001 23:09:24    -0400', 'Message-Id': '<000034e1158c$00001e19$000071e3@Life> ', 'To': 'LifeQuotes104@yahoo.com', 'From': 'LifeQuotes104@yahoo.com', 'Subject': 'Double Your Life Insurance at NO EXTRA COST! 29155', 'Date': 'Tue, 26 Jun 2001 23:09:10 -0400', 'MIME-Version': '1.0', 'Content-Transfer-Encoding': 'quoted-printable', 'X-Priority': '1', 'X-Msmail-Priority': 'High', 'Reply-To': 'No_Quotes102@yahoo.com'}
+2025-06-24 06:42:20,527 - INFO - Trích xuất đặc trưng email: {'hops': 3, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 1, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 0, 'str_from_chevron': 0, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return_path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 1, 'domain_match_to_from': 1, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 1, 'domain_match_message-id_from': 0, 'length_from': 23, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 1, 'span_time': 24.0, 'date_comp_date_received': 1, 'content-encoding-val': 1, 'received_str_forged': 0, 'number_replies': 0}
+2025-06-24 06:42:20,527 - ERROR - Không thể tải mô hình random_forest_email_pickle: Tệp mô hình ../models\random_forest_email.pkl không tồn tại
+2025-06-24 06:42:20,527 - ERROR - Lỗi không xác định khi xử lý tệp .eml phishing_email_1535.eml: Tệp mô hình ../models\random_forest_email.pkl không tồn tại
+2025-06-24 06:42:20,527 - INFO - 192.168.1.195 - - [24/Jun/2025 06:42:20] "[35m[1mPOST /api/email/predict HTTP/1.1[0m" 500 -
+2025-06-24 06:42:29,011 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 06:42:29,011 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 06:42:34,896 - INFO - 192.168.1.195 - - [24/Jun/2025 06:42:34] "[36mGET / HTTP/1.1[0m" 304 -
+2025-06-24 06:42:34,922 - INFO - 192.168.1.195 - - [24/Jun/2025 06:42:34] "[36mGET /static/js/main.cb55ca4f.js HTTP/1.1[0m" 304 -
+2025-06-24 06:42:34,922 - INFO - 192.168.1.195 - - [24/Jun/2025 06:42:34] "[36mGET /static/css/main.2fbccaf0.css HTTP/1.1[0m" 304 -
+2025-06-24 06:42:39,504 - INFO - Trích xuất headers: {'Delivered-To': 'n22dcat019@student.ptithcm.edu.vn', 'Received': 'from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])        by mx.google.com with SMTPS id ffacd0b85a97d-3a095a8bfb4sor2922472f8f.9.2025.05.06.01.52.23        for <d22cqat01-n@student.ptithcm.edu.vn>        (Google Transport Security);        Tue, 06 May 2025 01:52:23 -0700 (PDT)', 'X-Forwarded-Encrypted': 'i=1; AJvYcCWCgs/3M8JQWbuejt51k/GxGAsL51G+m2hBOhaGIsHQ9/LbWWkzclUHAaS4N07aDgJjF1dNlN13QKV7XQ==@student.ptithcm.edu.vn', 'X-Received': 'by 2002:a05:6000:1a8b:b0:391:10c5:d1a9 with SMTP id ffacd0b85a97d-3a0ac0eb10amr1750636f8f.31.1746521542105; Tue, 06 May 2025 01:52:22 -0700 (PDT)', 'ARC-Seal': 'i=1; a=rsa-sha256; t=1746521543; cv=none;        d=google.com; s=arc-20240605;        b=aUkHKeHb+2p0BdWr6B5bwLJKTtar6gm4lfoWQFUAixlk9Uz382S2LCOez9J1Ab+YYi         NDxsg8gB4q+LZxklzZEyxYBf1mlLn9lTxbPChIyt6Il/NiIPdf9lYLVIWflNxC4VL35U         QNs9zha9FZx5KYzdyABC0fYFLV8uqcw/4os43I8niuaYKqrzPA7g8vDy41ND4WVqensz         1mKcAI5rFyAL0IZ8ktwC2piBeGRmyEWmYVHZwieUhOpLWqbnEWsLYXHkHqZHpMM/Bjt6         j/PRrySuQ2JpoJiu3wQhowMJ36d1puiI5Dt8ZtxGmaiCGVG4w2vv+KDF5jgHA49OfcLH         E2uw==', 'ARC-Message-Signature': 'i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;        h=to:subject:message-id:date:from:mime-version:dkim-signature;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        fh=dcQbx2GER3DEfqTPBbuzrfyhpJJnPi+NOJYzhd+1Hco=;        b=Z95CXwnjnyfw1TiiHE1kZCSi4XskjFD+ENB0cMAdIkgCNO3eiRq5T6f2zMyo4eLOgJ         9cbQgqCvkIrlMCTE73O/LljV7AEgxTHk2k48HzLcZC3KeQi9YZkHsppRtkfYr+ixxEjT         /TSJJGj5DKMwLj0v6ankWVF0uQlv2KsmnW/83XAOB5PPA47n3CCFxEk4cnvvmVmYKfr8         xTSaNmz9HZmtJALzoYQVhvWsA4Wi9sBT+irjvNeOJ9FQe+4rNf0TfJ60WsKEgumAApUt         1PEdUMYtcFbKb0bfOY+uj1zO2VQe25GdYhYPfSHiGNvB/+R7jrHwpSg0UIa3DwfYVBXu         QFLA==;        dara=google.com', 'ARC-Authentication-Results': 'i=1; mx.google.com;       dkim=pass header.i=@ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=WoXrISC5;       spf=none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=pctsv@ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'Return-Path': '<d22cqat01-n+bncBCO7XOPBF4IMTG7HYADBUBHHZ5PQU@student.ptithcm.edu.vn>', 'Received-SPF': 'none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) client-ip=209.85.220.41;', 'Authentication-Results': 'mx.google.com;       dkim=pass header.i=@student-ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=PUiSzgI0;       arc=pass (i=2 dkim=pass dkdomain=ptithcm-edu-vn.20230601.gappssmtp.com);       spf=none (google.com: d22cqat01-n+bncbco7xopbf4imtg7hyadbubhhz5pqu@student.ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=d22cqat01-n+bncBCO7XOPBF4IMTG7HYADBUBHHZ5PQU@student.ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'DKIM-Signature': 'v=1; a=rsa-sha256; c=relaxed/relaxed;        d=student-ptithcm-edu-vn.20230601.gappssmtp.com; s=20230601; t=1746521546; x=1747126346; darn=student.ptithcm.edu.vn;        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post         :list-id:mailing-list:precedence:x-original-authentication-results         :x-original-sender:to:subject:message-id:date:from:mime-version:from         :to:cc:subject:date:message-id:reply-to;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        b=PUiSzgI0E/PisrM3eIKG1sgKtDrvr2w4/VbvWkQGBScYDhDi+ZYo+c3T5H9FfP0czF         AvVvIqXz1q74XyX6LmpHZ3p8Yd9Rj5v1iZyKYvaeNeqCfaOkwHeJ721Y/RJL+GZvHYPu         bY0hTQRSBR/bp2f0//dH5uLqYEVbthqLG4bn+qPXcnwAOjrJpRsvgm0q4ZMIOgRS6Jrd         6ypxnmQx+W7NBKeMvey2WpS3VJaK0Cdqg5kgeY4Lw9ELQRc/kVXHgHlmpQkcUMvOmzJP         qmK+NfkrpAn8DiuaRtjSfa32IUJ1AB24Ei9j0m5G2ZXq1pxk6gf3wf3L476azf9B6+w7         N8UA==', 'X-Google-DKIM-Signature': 'v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20230601; t=1746521546; x=1747126346;        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post         :x-spam-checked-in-group:list-id:mailing-list:precedence         :x-original-authentication-results:x-original-sender:to:subject         :message-id:date:from:mime-version:x-beenthere:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        b=b3gwudcjGKONnkTteBaSFPbJc9Rx5M3Aq9iYT86EzppyfLDR7pkcrELpKMJIOv9tER         fsqtciDth8qZrNPiNTHcRozi3glAtLCfRyshhBaPFvbMZcbpzWZZKMOmnuWwdaV3Qf5q         fpOhQ8Iprm/B/y5dkCrVpmSqDyi6G9gA7qB1iowHK2A/nXjMU089heK6Z8+66M0VCTHj         tvtCXwPThejrQupk8kuV5isn0klI6mIkAVdXkVKOut230zBca3nzPwKlNNzIgqoXKj9g         VOjwxAHVgS1c+9D9mN9O9evXPioHh29VxemmRmmJKLx6jqx6JJc2JzyR70ZIV7W5y5ty         Ekrw==', 'X-Gm-Message-State': 'AOJu0Yy7IH/kwhbJL2tANp4kq5PGko7s2+MDafNpl+iJFhkfcLlRXcF4\teukgYkTjdZHXo7+3CAL7XaAsYzPsCcWXhJS1kvhDTOurP3bldNuGNBeyJXUrfyl4pA==', 'X-Google-Smtp-Source': 'AGHT+IEmOKWf40jAr/0Es0qgRnDS7pt1RW/HQu3hILV5ZOgoF7PqCTUPC5de8erqrfrw7I3dJphdNQ==', 'X-BeenThere': 'd22cqat01-n@student.ptithcm.edu.vn; h=AVT/gBFn3aZPK7c/DtozeKqe3eDLtthvIUCFfbFLNeu2v0Cr5A==', 'X-Gm-Gg': 'ASbGncu1GDsiEGppvH1riwHuxZz5Zi4SrNjZ6AyDMx2zNuCTDIcAzrHCh1YbVQjEYUx\t7rvzG+vzr8H9+0vL8bj+CapXgjSzE0zlEPoKby8KNnXcpkGHCUlVPSaqEVjtBh/fLWk/2dLmkgP\tf1jMjFwflOMni97DnbCHnwI+cNYAg/ybA=', 'MIME-Version': '1.0', 'From': '"(CTSV) Phong cong tac sinh vien" <pctsv@ptithcm.edu.vn>', 'Date': 'Tue, 06 May 2025 15:52:11 +0700', 'X-Gm-Features': 'ATxdqUF3GLd73X4q7rEAieRh7ndTDxAyIi-54LVEId9003Btn9ctHOahQ7vpS9Y', 'Message-ID': '<CACAgaDBj-H5biQvYfmQYeYG2Ogmqbs2wc7RWa2orTMjqaw-D6Q@mail.gmail.com>', 'Subject': 'Re: C? h?i ngo?i kh?a cho h?c sinh, sinh vi?n Vi?t Nam', 'To': 'd24cqvt01-n@student.ptithcm.edu.vn', 'Content-Type': 'multipart/alternative; boundary="0000000000001c2ce4063473bc02"', 'Bcc': 'd22cqat01-n@student.ptithcm.edu.vn', 'X-Original-Sender': 'pctsv@ptithcm.edu.vn', 'X-Original-Authentication-Results': 'mx.google.com;       dkim=pass header.i=@ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=WoXrISC5;       spf=none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=pctsv@ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'Precedence': 'list', 'Mailing-list': 'list d22cqat01-n@student.ptithcm.edu.vn; contact d22cqat01-n+owners@student.ptithcm.edu.vn', 'List-ID': '<d22cqat01-n.student.ptithcm.edu.vn>', 'X-Spam-Checked-In-Group': 'd22cqat01-n@student.ptithcm.edu.vn', 'X-Google-Group-Id': '134060503702', 'List-Post': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/post>, <mailto:d22cqat01-n@student.ptithcm.edu.vn>', 'List-Help': '<https://support.google.com/a/student.ptithcm.edu.vn/bin/topic.py?topic=25838>, <mailto:d22cqat01-n+help@student.ptithcm.edu.vn>', 'List-Archive': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/>', 'List-Subscribe': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/subscribe>, <mailto:d22cqat01-n+subscribe@student.ptithcm.edu.vn>', 'List-Unsubscribe': '<mailto:googlegroups-manage+134060503702+unsubscribe@googlegroups.com>, <https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/subscribe>'}
+2025-06-24 06:42:39,512 - INFO - Trích xuất đặc trưng email: {'hops': 4, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 0, 'missing_received-spf': 0, 'missing_reply-to': 1, 'str_from_chevron': 1, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return_path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 56, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 1, 'span_time': 0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 1, 'number_replies': 0}
+2025-06-24 06:42:39,554 - INFO - Đã tải mô hình: random_forest_email_pickle
+2025-06-24 06:42:39,554 - ERROR - Lỗi khi xử lý tệp .eml Co_hoi_ngoai_khoa_cho_hoc_sinh_sinh_vien_Viet_Nam.eml: The feature names should match those that were passed during fit.
+Feature names unseen at fit time:
+- str_return_path_bounce
+Feature names seen at fit time, yet now missing:
+- str_return-path_bounce
+
+2025-06-24 06:42:39,554 - INFO - 192.168.1.195 - - [24/Jun/2025 06:42:39] "[31m[1mPOST /api/email/predict HTTP/1.1[0m" 400 -
+2025-06-24 06:44:03,453 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 06:44:03,453 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 06:44:05,261 - INFO - 192.168.1.195 - - [24/Jun/2025 06:44:05] "[36mGET / HTTP/1.1[0m" 304 -
+2025-06-24 06:44:05,299 - INFO - 192.168.1.195 - - [24/Jun/2025 06:44:05] "[36mGET /static/js/main.cb55ca4f.js HTTP/1.1[0m" 304 -
+2025-06-24 06:44:05,301 - INFO - 192.168.1.195 - - [24/Jun/2025 06:44:05] "[36mGET /static/css/main.2fbccaf0.css HTTP/1.1[0m" 304 -
+2025-06-24 06:44:09,115 - INFO - Trích xuất headers: {'Delivered-To': 'n22dcat019@student.ptithcm.edu.vn', 'Received': 'from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])        by mx.google.com with SMTPS id ffacd0b85a97d-3a095a8bfb4sor2922472f8f.9.2025.05.06.01.52.23        for <d22cqat01-n@student.ptithcm.edu.vn>        (Google Transport Security);        Tue, 06 May 2025 01:52:23 -0700 (PDT)', 'X-Forwarded-Encrypted': 'i=1; AJvYcCWCgs/3M8JQWbuejt51k/GxGAsL51G+m2hBOhaGIsHQ9/LbWWkzclUHAaS4N07aDgJjF1dNlN13QKV7XQ==@student.ptithcm.edu.vn', 'X-Received': 'by 2002:a05:6000:1a8b:b0:391:10c5:d1a9 with SMTP id ffacd0b85a97d-3a0ac0eb10amr1750636f8f.31.1746521542105; Tue, 06 May 2025 01:52:22 -0700 (PDT)', 'ARC-Seal': 'i=1; a=rsa-sha256; t=1746521543; cv=none;        d=google.com; s=arc-20240605;        b=aUkHKeHb+2p0BdWr6B5bwLJKTtar6gm4lfoWQFUAixlk9Uz382S2LCOez9J1Ab+YYi         NDxsg8gB4q+LZxklzZEyxYBf1mlLn9lTxbPChIyt6Il/NiIPdf9lYLVIWflNxC4VL35U         QNs9zha9FZx5KYzdyABC0fYFLV8uqcw/4os43I8niuaYKqrzPA7g8vDy41ND4WVqensz         1mKcAI5rFyAL0IZ8ktwC2piBeGRmyEWmYVHZwieUhOpLWqbnEWsLYXHkHqZHpMM/Bjt6         j/PRrySuQ2JpoJiu3wQhowMJ36d1puiI5Dt8ZtxGmaiCGVG4w2vv+KDF5jgHA49OfcLH         E2uw==', 'ARC-Message-Signature': 'i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;        h=to:subject:message-id:date:from:mime-version:dkim-signature;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        fh=dcQbx2GER3DEfqTPBbuzrfyhpJJnPi+NOJYzhd+1Hco=;        b=Z95CXwnjnyfw1TiiHE1kZCSi4XskjFD+ENB0cMAdIkgCNO3eiRq5T6f2zMyo4eLOgJ         9cbQgqCvkIrlMCTE73O/LljV7AEgxTHk2k48HzLcZC3KeQi9YZkHsppRtkfYr+ixxEjT         /TSJJGj5DKMwLj0v6ankWVF0uQlv2KsmnW/83XAOB5PPA47n3CCFxEk4cnvvmVmYKfr8         xTSaNmz9HZmtJALzoYQVhvWsA4Wi9sBT+irjvNeOJ9FQe+4rNf0TfJ60WsKEgumAApUt         1PEdUMYtcFbKb0bfOY+uj1zO2VQe25GdYhYPfSHiGNvB/+R7jrHwpSg0UIa3DwfYVBXu         QFLA==;        dara=google.com', 'ARC-Authentication-Results': 'i=1; mx.google.com;       dkim=pass header.i=@ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=WoXrISC5;       spf=none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=pctsv@ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'Return-Path': '<d22cqat01-n+bncBCO7XOPBF4IMTG7HYADBUBHHZ5PQU@student.ptithcm.edu.vn>', 'Received-SPF': 'none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) client-ip=209.85.220.41;', 'Authentication-Results': 'mx.google.com;       dkim=pass header.i=@student-ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=PUiSzgI0;       arc=pass (i=2 dkim=pass dkdomain=ptithcm-edu-vn.20230601.gappssmtp.com);       spf=none (google.com: d22cqat01-n+bncbco7xopbf4imtg7hyadbubhhz5pqu@student.ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=d22cqat01-n+bncBCO7XOPBF4IMTG7HYADBUBHHZ5PQU@student.ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'DKIM-Signature': 'v=1; a=rsa-sha256; c=relaxed/relaxed;        d=student-ptithcm-edu-vn.20230601.gappssmtp.com; s=20230601; t=1746521546; x=1747126346; darn=student.ptithcm.edu.vn;        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post         :list-id:mailing-list:precedence:x-original-authentication-results         :x-original-sender:to:subject:message-id:date:from:mime-version:from         :to:cc:subject:date:message-id:reply-to;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        b=PUiSzgI0E/PisrM3eIKG1sgKtDrvr2w4/VbvWkQGBScYDhDi+ZYo+c3T5H9FfP0czF         AvVvIqXz1q74XyX6LmpHZ3p8Yd9Rj5v1iZyKYvaeNeqCfaOkwHeJ721Y/RJL+GZvHYPu         bY0hTQRSBR/bp2f0//dH5uLqYEVbthqLG4bn+qPXcnwAOjrJpRsvgm0q4ZMIOgRS6Jrd         6ypxnmQx+W7NBKeMvey2WpS3VJaK0Cdqg5kgeY4Lw9ELQRc/kVXHgHlmpQkcUMvOmzJP         qmK+NfkrpAn8DiuaRtjSfa32IUJ1AB24Ei9j0m5G2ZXq1pxk6gf3wf3L476azf9B6+w7         N8UA==', 'X-Google-DKIM-Signature': 'v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20230601; t=1746521546; x=1747126346;        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post         :x-spam-checked-in-group:list-id:mailing-list:precedence         :x-original-authentication-results:x-original-sender:to:subject         :message-id:date:from:mime-version:x-beenthere:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        b=b3gwudcjGKONnkTteBaSFPbJc9Rx5M3Aq9iYT86EzppyfLDR7pkcrELpKMJIOv9tER         fsqtciDth8qZrNPiNTHcRozi3glAtLCfRyshhBaPFvbMZcbpzWZZKMOmnuWwdaV3Qf5q         fpOhQ8Iprm/B/y5dkCrVpmSqDyi6G9gA7qB1iowHK2A/nXjMU089heK6Z8+66M0VCTHj         tvtCXwPThejrQupk8kuV5isn0klI6mIkAVdXkVKOut230zBca3nzPwKlNNzIgqoXKj9g         VOjwxAHVgS1c+9D9mN9O9evXPioHh29VxemmRmmJKLx6jqx6JJc2JzyR70ZIV7W5y5ty         Ekrw==', 'X-Gm-Message-State': 'AOJu0Yy7IH/kwhbJL2tANp4kq5PGko7s2+MDafNpl+iJFhkfcLlRXcF4\teukgYkTjdZHXo7+3CAL7XaAsYzPsCcWXhJS1kvhDTOurP3bldNuGNBeyJXUrfyl4pA==', 'X-Google-Smtp-Source': 'AGHT+IEmOKWf40jAr/0Es0qgRnDS7pt1RW/HQu3hILV5ZOgoF7PqCTUPC5de8erqrfrw7I3dJphdNQ==', 'X-BeenThere': 'd22cqat01-n@student.ptithcm.edu.vn; h=AVT/gBFn3aZPK7c/DtozeKqe3eDLtthvIUCFfbFLNeu2v0Cr5A==', 'X-Gm-Gg': 'ASbGncu1GDsiEGppvH1riwHuxZz5Zi4SrNjZ6AyDMx2zNuCTDIcAzrHCh1YbVQjEYUx\t7rvzG+vzr8H9+0vL8bj+CapXgjSzE0zlEPoKby8KNnXcpkGHCUlVPSaqEVjtBh/fLWk/2dLmkgP\tf1jMjFwflOMni97DnbCHnwI+cNYAg/ybA=', 'MIME-Version': '1.0', 'From': '"(CTSV) Phong cong tac sinh vien" <pctsv@ptithcm.edu.vn>', 'Date': 'Tue, 06 May 2025 15:52:11 +0700', 'X-Gm-Features': 'ATxdqUF3GLd73X4q7rEAieRh7ndTDxAyIi-54LVEId9003Btn9ctHOahQ7vpS9Y', 'Message-ID': '<CACAgaDBj-H5biQvYfmQYeYG2Ogmqbs2wc7RWa2orTMjqaw-D6Q@mail.gmail.com>', 'Subject': 'Re: C? h?i ngo?i kh?a cho h?c sinh, sinh vi?n Vi?t Nam', 'To': 'd24cqvt01-n@student.ptithcm.edu.vn', 'Content-Type': 'multipart/alternative; boundary="0000000000001c2ce4063473bc02"', 'Bcc': 'd22cqat01-n@student.ptithcm.edu.vn', 'X-Original-Sender': 'pctsv@ptithcm.edu.vn', 'X-Original-Authentication-Results': 'mx.google.com;       dkim=pass header.i=@ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=WoXrISC5;       spf=none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=pctsv@ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'Precedence': 'list', 'Mailing-list': 'list d22cqat01-n@student.ptithcm.edu.vn; contact d22cqat01-n+owners@student.ptithcm.edu.vn', 'List-ID': '<d22cqat01-n.student.ptithcm.edu.vn>', 'X-Spam-Checked-In-Group': 'd22cqat01-n@student.ptithcm.edu.vn', 'X-Google-Group-Id': '134060503702', 'List-Post': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/post>, <mailto:d22cqat01-n@student.ptithcm.edu.vn>', 'List-Help': '<https://support.google.com/a/student.ptithcm.edu.vn/bin/topic.py?topic=25838>, <mailto:d22cqat01-n+help@student.ptithcm.edu.vn>', 'List-Archive': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/>', 'List-Subscribe': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/subscribe>, <mailto:d22cqat01-n+subscribe@student.ptithcm.edu.vn>', 'List-Unsubscribe': '<mailto:googlegroups-manage+134060503702+unsubscribe@googlegroups.com>, <https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/subscribe>'}
+2025-06-24 06:44:09,122 - INFO - Trích xuất đặc trưng email: {'hops': 4, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 0, 'missing_received-spf': 0, 'missing_reply-to': 1, 'str_from_chevron': 1, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 56, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 1, 'span_time': 0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 1, 'number_replies': 0}
+2025-06-24 06:44:09,143 - INFO - Đã tải mô hình: random_forest_email_pickle
+2025-06-24 06:44:09,143 - INFO - Dự đoán cho Co_hoi_ngoai_khoa_cho_hoc_sinh_sinh_vien_Viet_Nam.eml: rf_confidence=0.0800, result=Legitimate
+2025-06-24 06:44:09,151 - INFO - 192.168.1.195 - - [24/Jun/2025 06:44:09] "POST /api/email/predict HTTP/1.1" 200 -
+2025-06-24 06:44:15,518 - INFO - Trích xuất headers: {'Return-Path': '<bell1hmed@yahoo.ca>', 'Delivered-To': 'zzzz@localhost.spamassassin.taint.org', 'Received': 'from n2now709.com ([64.86.155.148]) by dogma.slashnull.org    (8.11.6/8.11.6) with SMTP id g7MKV5Z23408 for <zzzz@jmason.org>;    Thu, 22 Aug 2002 21:31:06 +0100', 'Message-Id': '<200208222031.g7MKV5Z23408@dogma.slashnull.org>', 'From': 'Dr Bello Ahmed <bell1hmed@yahoo.ca>', 'Reply-To': 'bell1hmed@yahoo.ca', 'Date': 'Thu, 22 Aug 2002 13:31:18 -0700', 'Subject': 'Relationship', 'X-Mailer': 'Microsoft Outlook Express 5.00.2919.6900 DM', 'MIME-Version': '1.0', 'Content-Type': 'multipart/mixed; boundary="===_SecAtt_000_1fheucnqggtggp"', 'To': 'undisclosed-recipients:;'}
+2025-06-24 06:44:15,524 - INFO - Trích xuất đặc trưng email: {'hops': 3, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 0, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 0, 'str_from_chevron': 1, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 1, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 1, 'domain_match_message-id_from': 0, 'length_from': 35, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 3, 'span_time': 49237.0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 0, 'number_replies': 0}
+2025-06-24 06:44:15,545 - INFO - Dự đoán cho phishing_email_523.eml: rf_confidence=0.7200, result=Phishing
+2025-06-24 06:44:15,545 - INFO - 192.168.1.195 - - [24/Jun/2025 06:44:15] "POST /api/email/predict HTTP/1.1" 200 -
+2025-06-24 06:44:18,678 - INFO - Trích xuất headers: {'Return-Path': '<LifeQuotes104@yahoo.com>', 'Delivered-To': 'yyyy@netnoteinc.com', 'Received': 'from Life 300(113.2.2.1) Life1 by    sdn-ar-002riprovP318.dialsprint.net with ESMTP; Tue, 26 Jun 2001 23:09:24    -0400', 'Message-Id': '<000034e1158c$00001e19$000071e3@Life> ', 'To': 'LifeQuotes104@yahoo.com', 'From': 'LifeQuotes104@yahoo.com', 'Subject': 'Double Your Life Insurance at NO EXTRA COST! 29155', 'Date': 'Tue, 26 Jun 2001 23:09:10 -0400', 'MIME-Version': '1.0', 'Content-Transfer-Encoding': 'quoted-printable', 'X-Priority': '1', 'X-Msmail-Priority': 'High', 'Reply-To': 'No_Quotes102@yahoo.com'}
+2025-06-24 06:44:18,684 - INFO - Trích xuất đặc trưng email: {'hops': 3, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 1, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 1, 'missing_received-spf': 1, 'missing_reply-to': 0, 'str_from_chevron': 0, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 1, 'domain_match_to_from': 1, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 1, 'domain_match_message-id_from': 0, 'length_from': 23, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 1, 'span_time': 24.0, 'date_comp_date_received': 1, 'content-encoding-val': 1, 'received_str_forged': 0, 'number_replies': 0}
+2025-06-24 06:44:18,692 - INFO - Dự đoán cho phishing_email_1535.eml: rf_confidence=0.6200, result=Phishing
+2025-06-24 06:44:18,699 - INFO - 192.168.1.195 - - [24/Jun/2025 06:44:18] "POST /api/email/predict HTTP/1.1" 200 -
+2025-06-24 06:44:21,420 - INFO - Trích xuất headers: {'Delivered-To': 'legioiho@gmail.com', 'Received': 'by ef98127d88c2 with HTTP id 681773c7216d0e2bc8660ac9; Sun, 04 May 2025 14:03:51 GMT', 'X-Google-Smtp-Source': 'AGHT+IGziqVq0wju1mZe3rG16sVf3WANBfL73K2psz4k+XKstaSCP9ikW3+V42uO3Ofo/eJTZfFG', 'X-Received': 'by 2002:a05:622a:8292:b0:48e:5cda:f73c with SMTP id d75a77b69052e-48e5cdaf80dmr38764411cf.48.1746367431763;        Sun, 04 May 2025 07:03:51 -0700 (PDT)', 'ARC-Seal': 'i=1; a=rsa-sha256; t=1746367431; cv=none;        d=google.com; s=arc-20240605;        b=Q6NjZt5pl4LDJ0Jjh+4swjNfxxBKEPRsRTT7wqKoqDrY17spwhktrbrbpjC8+hhFcF         JhtL+vCuuAoSZBc4899rOyqPVURG8HhWpcD0mm0FecQBCtuWeqbs6m8hlIZJtcgRho8J         gzob2L1L9whlo6r3EOPtEA9kcz37/Rs/I7OucjY931ySwahORkiaucua0zAzbTzITW8m         pFaMkiZc9uCtrPpKA4wGvUPlBmj/+INtKRjm4/5DakQtBP7L1yRusxKJW5FAfZ8S1Yqi         Qh5yeEQnz7+cAvH5ED6i2J5u0AyHiA29tFyWmmxJFON5X7FZxmD/Acr9NPdW8JE3vn/7         EAiw==', 'ARC-Message-Signature': 'i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;        h=message-id:list-unsubscribe-post:list-unsubscribe:to:from:subject         :mime-version:date:dkim-signature:dkim-signature;        bh=JF7nWa3oErHHm7WN2FHufbnVAnCp9ui37xlQMBnShBk=;        fh=UFWdutZQ8jW58mqgJMccbP94CxJkXYfYZheEbUIKYEM=;        b=XeAgMbbr+kZN8+Rd5F8x/0m8V3jt2de3TfOI6at5r2hDvju/3a9nlGND/pkG3RC/q6         ri14a2HegmgJOWDAxsEzj6hvt1dri9gZfqr3hdTDxMIXrRXaTvran5Gj2XrPkC+Civau         5/I7x0EXLUZIIiFes//VF95NcY6LnWzwa3JNAnu//0rd7vOOhzgiry03cFqQfHESEG5p         ZnocTaAYrrCozHheDGpCjp/rDFYtDZu/o5UXcr3KG/fZxZ4y4PGvWZWxw2/RQgSxNvTt         V9qWU+Tss4yjHW1dCPG+Sc/B1IvcBCoJWbmlIYl9BHnuwwLzGq129GBGrszkfWLBFpWg         l/Dw==;        dara=google.com', 'ARC-Authentication-Results': 'i=1; mx.google.com;       dkim=pass header.i=@cio56239.tryhackme.com header.s=smtp header.b=Eh5Z1RWg;       dkim=pass header.i=@mailgun.org header.s=mg header.b=givMAfre;       spf=pass (google.com: domain of postmaster@cio56239.tryhackme.com designates 159.112.241.136 as permitted sender) smtp.mailfrom=postmaster@cio56239.tryhackme.com;       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=tryhackme.com', 'Return-Path': '<postmaster@cio56239.tryhackme.com>', 'Received-SPF': 'pass (google.com: domain of postmaster@cio56239.tryhackme.com designates 159.112.241.136 as permitted sender) client-ip=159.112.241.136;', 'Authentication-Results': 'mx.google.com;       dkim=pass header.i=@cio56239.tryhackme.com header.s=smtp header.b=Eh5Z1RWg;       dkim=pass header.i=@mailgun.org header.s=mg header.b=givMAfre;       spf=pass (google.com: domain of postmaster@cio56239.tryhackme.com designates 159.112.241.136 as permitted sender) smtp.mailfrom=postmaster@cio56239.tryhackme.com;       dmarc=pass (p=QUARANTINE sp=QUARANTINE dis=NONE) header.from=tryhackme.com', 'DKIM-Signature': 'a=rsa-sha256; v=1; c=relaxed/relaxed; d=mailgun.org; q=dns/txt; s=mg; t=1746367431; x=1746374631; h=Message-Id: List-Unsubscribe-Post: List-Unsubscribe: To: To: From: From: Subject: Subject: Content-Type: Mime-Version: Date: X-Feedback-Id: Sender; bh=JF7nWa3oErHHm7WN2FHufbnVAnCp9ui37xlQMBnShBk=; b=givMAfreVjG8IzeFVuusg+5YP+VEBRbqkjvFyE7JBuBbF5fRwoBrrK+l2BXLjNfBbLlX49LV9Sx6vqmbmp2TiSFm6YC7FDnBx1lhq6vIRBsswefdPxZPa1WmuEbtZTK67wiF8jcnHNeUKAsfskaCMhI/FIQDnTffIeeNq9qZn9M=', 'X-Feedback-Id': 'postmaster@cio56239.tryhackme.com::5eb3f9f45e348a34cf90b8e5:mailgun', 'X-Mailgun-Sending-Ip': '159.112.241.136', 'X-Mailgun-Sending-Ip-Pool-Name': '', 'X-Mailgun-Sending-Ip-Pool': '', 'X-Mailgun-Sid': 'WyI3NzZkMiIsImxlZ2lvaWhvQGdtYWlsLmNvbSIsIjI4NmQ1YSJd', 'Date': 'Sun, 04 May 2025 14:03:51 +0000', 'Mime-Version': '1.0', 'Content-Type': 'multipart/alternative; boundary="2671af08666a908ab52567e408e28006f22af9c38d3ea074a205d4d92b83"', 'Subject': '[25% Off] The Force is strong with this deal ?', 'From': 'TryHackMe <hello@tryhackme.com>', 'To': 'legioiho@gmail.com', 'X-Mailgun-Dkim': 'true', 'X-Mailgun-Native-Send': 'true', 'X-Mailgun-Track-Clicks': 'false', 'X-Mailgun-Track-Opens': 'false', 'List-Unsubscribe': '<mailto:32.MRTVISZRKFKUIQKQGNNHAUKIHAZGCVKCIFNGCYSTNFWECU3WMJDDQM2DOJSG2S22J53T2PI=@unsubscribe2.customer.io>, <https://e.customeriomail.com/unsubscribe/dgTK1QUDAP3ZpQH82aUBAZabSilASvbF83CrdmKZOw==>', 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click', 'X-Mailer': 'Customer.io (dgTK1QUDAP3ZpQH82aUBAZabSilASvbF83CrdmKZOw==; +https://whatis.customeriomail.com)', 'X-Report-Abuse-To': 'badactor@customer.io', 'X-Mailgun-Variables': '{"email_id": "dgTK1QUDAP3ZpQH82aUBAZabSilASvbF83CrdmKZOw=="}', 'Message-Id': '<20250504140351.994f7573c66df21e@cio56239.tryhackme.com>'}
+2025-06-24 06:44:21,421 - INFO - Trích xuất đặc trưng email: {'hops': 3, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 1, 'missing_x-mailer': 0, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 0, 'missing_received-spf': 0, 'missing_reply-to': 1, 'str_from_chevron': 1, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 31, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 6, 'span_time': 0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 1, 'number_replies': 0}
+2025-06-24 06:44:21,435 - INFO - Dự đoán cho 25_Off_The_Force_is_strong_with_this_deal_.eml: rf_confidence=0.1600, result=Legitimate
+2025-06-24 06:44:21,435 - INFO - 192.168.1.195 - - [24/Jun/2025 06:44:21] "POST /api/email/predict HTTP/1.1" 200 -
+2025-06-24 07:04:30,410 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 07:04:30,410 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 07:04:33,462 - INFO - 192.168.1.195 - - [24/Jun/2025 07:04:33] "GET / HTTP/1.1" 200 -
+2025-06-24 07:04:33,495 - INFO - 192.168.1.195 - - [24/Jun/2025 07:04:33] "GET /static/css/main.2fbccaf0.css HTTP/1.1" 200 -
+2025-06-24 07:04:33,558 - INFO - 192.168.1.195 - - [24/Jun/2025 07:04:33] "GET /static/js/main.75a935dd.js HTTP/1.1" 200 -
+2025-06-24 07:04:37,103 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 07:04:37,119 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.1498, result=Legitimate
+2025-06-24 07:04:37,124 - INFO - 192.168.1.195 - - [24/Jun/2025 07:04:37] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 07:04:41,894 - INFO - Trích xuất headers: {'Delivered-To': 'n22dcat019@student.ptithcm.edu.vn', 'Received': 'from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])        by mx.google.com with SMTPS id ffacd0b85a97d-3a095a8bfb4sor2922472f8f.9.2025.05.06.01.52.23        for <d22cqat01-n@student.ptithcm.edu.vn>        (Google Transport Security);        Tue, 06 May 2025 01:52:23 -0700 (PDT)', 'X-Forwarded-Encrypted': 'i=1; AJvYcCWCgs/3M8JQWbuejt51k/GxGAsL51G+m2hBOhaGIsHQ9/LbWWkzclUHAaS4N07aDgJjF1dNlN13QKV7XQ==@student.ptithcm.edu.vn', 'X-Received': 'by 2002:a05:6000:1a8b:b0:391:10c5:d1a9 with SMTP id ffacd0b85a97d-3a0ac0eb10amr1750636f8f.31.1746521542105; Tue, 06 May 2025 01:52:22 -0700 (PDT)', 'ARC-Seal': 'i=1; a=rsa-sha256; t=1746521543; cv=none;        d=google.com; s=arc-20240605;        b=aUkHKeHb+2p0BdWr6B5bwLJKTtar6gm4lfoWQFUAixlk9Uz382S2LCOez9J1Ab+YYi         NDxsg8gB4q+LZxklzZEyxYBf1mlLn9lTxbPChIyt6Il/NiIPdf9lYLVIWflNxC4VL35U         QNs9zha9FZx5KYzdyABC0fYFLV8uqcw/4os43I8niuaYKqrzPA7g8vDy41ND4WVqensz         1mKcAI5rFyAL0IZ8ktwC2piBeGRmyEWmYVHZwieUhOpLWqbnEWsLYXHkHqZHpMM/Bjt6         j/PRrySuQ2JpoJiu3wQhowMJ36d1puiI5Dt8ZtxGmaiCGVG4w2vv+KDF5jgHA49OfcLH         E2uw==', 'ARC-Message-Signature': 'i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;        h=to:subject:message-id:date:from:mime-version:dkim-signature;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        fh=dcQbx2GER3DEfqTPBbuzrfyhpJJnPi+NOJYzhd+1Hco=;        b=Z95CXwnjnyfw1TiiHE1kZCSi4XskjFD+ENB0cMAdIkgCNO3eiRq5T6f2zMyo4eLOgJ         9cbQgqCvkIrlMCTE73O/LljV7AEgxTHk2k48HzLcZC3KeQi9YZkHsppRtkfYr+ixxEjT         /TSJJGj5DKMwLj0v6ankWVF0uQlv2KsmnW/83XAOB5PPA47n3CCFxEk4cnvvmVmYKfr8         xTSaNmz9HZmtJALzoYQVhvWsA4Wi9sBT+irjvNeOJ9FQe+4rNf0TfJ60WsKEgumAApUt         1PEdUMYtcFbKb0bfOY+uj1zO2VQe25GdYhYPfSHiGNvB/+R7jrHwpSg0UIa3DwfYVBXu         QFLA==;        dara=google.com', 'ARC-Authentication-Results': 'i=1; mx.google.com;       dkim=pass header.i=@ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=WoXrISC5;       spf=none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=pctsv@ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'Return-Path': '<d22cqat01-n+bncBCO7XOPBF4IMTG7HYADBUBHHZ5PQU@student.ptithcm.edu.vn>', 'Received-SPF': 'none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) client-ip=209.85.220.41;', 'Authentication-Results': 'mx.google.com;       dkim=pass header.i=@student-ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=PUiSzgI0;       arc=pass (i=2 dkim=pass dkdomain=ptithcm-edu-vn.20230601.gappssmtp.com);       spf=none (google.com: d22cqat01-n+bncbco7xopbf4imtg7hyadbubhhz5pqu@student.ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=d22cqat01-n+bncBCO7XOPBF4IMTG7HYADBUBHHZ5PQU@student.ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'DKIM-Signature': 'v=1; a=rsa-sha256; c=relaxed/relaxed;        d=student-ptithcm-edu-vn.20230601.gappssmtp.com; s=20230601; t=1746521546; x=1747126346; darn=student.ptithcm.edu.vn;        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post         :list-id:mailing-list:precedence:x-original-authentication-results         :x-original-sender:to:subject:message-id:date:from:mime-version:from         :to:cc:subject:date:message-id:reply-to;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        b=PUiSzgI0E/PisrM3eIKG1sgKtDrvr2w4/VbvWkQGBScYDhDi+ZYo+c3T5H9FfP0czF         AvVvIqXz1q74XyX6LmpHZ3p8Yd9Rj5v1iZyKYvaeNeqCfaOkwHeJ721Y/RJL+GZvHYPu         bY0hTQRSBR/bp2f0//dH5uLqYEVbthqLG4bn+qPXcnwAOjrJpRsvgm0q4ZMIOgRS6Jrd         6ypxnmQx+W7NBKeMvey2WpS3VJaK0Cdqg5kgeY4Lw9ELQRc/kVXHgHlmpQkcUMvOmzJP         qmK+NfkrpAn8DiuaRtjSfa32IUJ1AB24Ei9j0m5G2ZXq1pxk6gf3wf3L476azf9B6+w7         N8UA==', 'X-Google-DKIM-Signature': 'v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20230601; t=1746521546; x=1747126346;        h=list-unsubscribe:list-subscribe:list-archive:list-help:list-post         :x-spam-checked-in-group:list-id:mailing-list:precedence         :x-original-authentication-results:x-original-sender:to:subject         :message-id:date:from:mime-version:x-beenthere:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=m8b7DSX/Fnxex48K69243+f4uIZlLRRk/J+hrFa5rx8=;        b=b3gwudcjGKONnkTteBaSFPbJc9Rx5M3Aq9iYT86EzppyfLDR7pkcrELpKMJIOv9tER         fsqtciDth8qZrNPiNTHcRozi3glAtLCfRyshhBaPFvbMZcbpzWZZKMOmnuWwdaV3Qf5q         fpOhQ8Iprm/B/y5dkCrVpmSqDyi6G9gA7qB1iowHK2A/nXjMU089heK6Z8+66M0VCTHj         tvtCXwPThejrQupk8kuV5isn0klI6mIkAVdXkVKOut230zBca3nzPwKlNNzIgqoXKj9g         VOjwxAHVgS1c+9D9mN9O9evXPioHh29VxemmRmmJKLx6jqx6JJc2JzyR70ZIV7W5y5ty         Ekrw==', 'X-Gm-Message-State': 'AOJu0Yy7IH/kwhbJL2tANp4kq5PGko7s2+MDafNpl+iJFhkfcLlRXcF4\teukgYkTjdZHXo7+3CAL7XaAsYzPsCcWXhJS1kvhDTOurP3bldNuGNBeyJXUrfyl4pA==', 'X-Google-Smtp-Source': 'AGHT+IEmOKWf40jAr/0Es0qgRnDS7pt1RW/HQu3hILV5ZOgoF7PqCTUPC5de8erqrfrw7I3dJphdNQ==', 'X-BeenThere': 'd22cqat01-n@student.ptithcm.edu.vn; h=AVT/gBFn3aZPK7c/DtozeKqe3eDLtthvIUCFfbFLNeu2v0Cr5A==', 'X-Gm-Gg': 'ASbGncu1GDsiEGppvH1riwHuxZz5Zi4SrNjZ6AyDMx2zNuCTDIcAzrHCh1YbVQjEYUx\t7rvzG+vzr8H9+0vL8bj+CapXgjSzE0zlEPoKby8KNnXcpkGHCUlVPSaqEVjtBh/fLWk/2dLmkgP\tf1jMjFwflOMni97DnbCHnwI+cNYAg/ybA=', 'MIME-Version': '1.0', 'From': '"(CTSV) Phong cong tac sinh vien" <pctsv@ptithcm.edu.vn>', 'Date': 'Tue, 06 May 2025 15:52:11 +0700', 'X-Gm-Features': 'ATxdqUF3GLd73X4q7rEAieRh7ndTDxAyIi-54LVEId9003Btn9ctHOahQ7vpS9Y', 'Message-ID': '<CACAgaDBj-H5biQvYfmQYeYG2Ogmqbs2wc7RWa2orTMjqaw-D6Q@mail.gmail.com>', 'Subject': 'Re: C? h?i ngo?i kh?a cho h?c sinh, sinh vi?n Vi?t Nam', 'To': 'd24cqvt01-n@student.ptithcm.edu.vn', 'Content-Type': 'multipart/alternative; boundary="0000000000001c2ce4063473bc02"', 'Bcc': 'd22cqat01-n@student.ptithcm.edu.vn', 'X-Original-Sender': 'pctsv@ptithcm.edu.vn', 'X-Original-Authentication-Results': 'mx.google.com;       dkim=pass header.i=@ptithcm-edu-vn.20230601.gappssmtp.com header.s=20230601 header.b=WoXrISC5;       spf=none (google.com: pctsv@ptithcm.edu.vn does not designate permitted sender hosts) smtp.mailfrom=pctsv@ptithcm.edu.vn;       dara=pass header.i=@student.ptithcm.edu.vn', 'Precedence': 'list', 'Mailing-list': 'list d22cqat01-n@student.ptithcm.edu.vn; contact d22cqat01-n+owners@student.ptithcm.edu.vn', 'List-ID': '<d22cqat01-n.student.ptithcm.edu.vn>', 'X-Spam-Checked-In-Group': 'd22cqat01-n@student.ptithcm.edu.vn', 'X-Google-Group-Id': '134060503702', 'List-Post': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/post>, <mailto:d22cqat01-n@student.ptithcm.edu.vn>', 'List-Help': '<https://support.google.com/a/student.ptithcm.edu.vn/bin/topic.py?topic=25838>, <mailto:d22cqat01-n+help@student.ptithcm.edu.vn>', 'List-Archive': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/>', 'List-Subscribe': '<https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/subscribe>, <mailto:d22cqat01-n+subscribe@student.ptithcm.edu.vn>', 'List-Unsubscribe': '<mailto:googlegroups-manage+134060503702+unsubscribe@googlegroups.com>, <https://groups.google.com/a/student.ptithcm.edu.vn/group/d22cqat01-n/subscribe>'}
+2025-06-24 07:04:41,901 - INFO - Trích xuất đặc trưng email: {'hops': 4, 'missing_subject': 0, 'missing_to': 0, 'missing_content-type': 0, 'missing_mime-version': 0, 'missing_x-mailer': 1, 'missing_delivered-to': 0, 'missing_list-unsubscribe': 0, 'missing_received-spf': 0, 'missing_reply-to': 1, 'str_from_chevron': 1, 'str_to_chevron': 0, 'str_message-ID_dollar': 0, 'str_return-path_bounce': 0, 'str_content-type_texthtml': 0, 'domain_match_from_return-path': 0, 'domain_match_to_from': 0, 'domain_match_to_message-id': 0, 'domain_match_from_reply-to': 0, 'domain_match_message-id_from': 0, 'length_from': 56, 'num_recipients_to': 1, 'num_recipients_cc': 0, 'time_zone': 1, 'day_of_week': 1, 'span_time': 0, 'date_comp_date_received': 1, 'content-encoding-val': 0, 'received_str_forged': 1, 'number_replies': 0}
+2025-06-24 07:04:41,950 - INFO - Đã tải mô hình: random_forest_email_pickle
+2025-06-24 07:04:41,964 - INFO - Dự đoán cho Co_hoi_ngoai_khoa_cho_hoc_sinh_sinh_vien_Viet_Nam.eml: rf_confidence=0.0800, result=Legitimate
+2025-06-24 07:04:41,964 - INFO - 192.168.1.195 - - [24/Jun/2025 07:04:41] "POST /api/email/predict HTTP/1.1" 200 -
+2025-06-24 08:20:26,671 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:20:26,672 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:20:31,164 - INFO - 192.168.1.195 - - [24/Jun/2025 08:20:31] "GET / HTTP/1.1" 200 -
+2025-06-24 08:20:31,205 - INFO - 192.168.1.195 - - [24/Jun/2025 08:20:31] "GET /static/css/main.4aed6511.css HTTP/1.1" 200 -
+2025-06-24 08:20:31,266 - INFO - 192.168.1.195 - - [24/Jun/2025 08:20:31] "GET /static/js/main.e8773f88.js HTTP/1.1" 200 -
+2025-06-24 08:20:38,834 - ERROR - Không thể tải mô hình random_forest_URL_pickle: Tệp mô hình ../models\random_forest_URL.pkl không tồn tại
+2025-06-24 08:20:38,834 - ERROR - Lỗi khi xử lý URL/text: Tệp mô hình ../models\random_forest_URL.pkl không tồn tại
+2025-06-24 08:20:38,834 - INFO - 192.168.1.195 - - [24/Jun/2025 08:20:38] "[35m[1mPOST /api/url/predict HTTP/1.1[0m" 500 -
+2025-06-24 08:20:57,800 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:20:57,800 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:20:59,325 - INFO - 192.168.1.195 - - [24/Jun/2025 08:20:59] "[36mGET / HTTP/1.1[0m" 304 -
+2025-06-24 08:20:59,360 - INFO - 192.168.1.195 - - [24/Jun/2025 08:20:59] "[36mGET /static/css/main.4aed6511.css HTTP/1.1[0m" 304 -
+2025-06-24 08:20:59,361 - INFO - 192.168.1.195 - - [24/Jun/2025 08:20:59] "[36mGET /static/js/main.e8773f88.js HTTP/1.1[0m" 304 -
+2025-06-24 08:21:01,810 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:21:01,810 - ERROR - Lỗi khi xử lý URL/text: predict_url() takes 0 positional arguments but 2 were given
+2025-06-24 08:21:01,810 - INFO - 192.168.1.195 - - [24/Jun/2025 08:21:01] "[35m[1mPOST /api/url/predict HTTP/1.1[0m" 500 -
+2025-06-24 08:22:50,578 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:22:50,578 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:22:52,481 - INFO - 127.0.0.1 - - [24/Jun/2025 08:22:52] "GET / HTTP/1.1" 200 -
+2025-06-24 08:22:52,513 - INFO - 127.0.0.1 - - [24/Jun/2025 08:22:52] "GET /static/js/main.e8773f88.js HTTP/1.1" 200 -
+2025-06-24 08:22:52,513 - INFO - 127.0.0.1 - - [24/Jun/2025 08:22:52] "GET /static/css/main.4aed6511.css HTTP/1.1" 200 -
+2025-06-24 08:22:56,758 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:23:05,432 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:23:05,432 - INFO - 127.0.0.1 - - [24/Jun/2025 08:23:05] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:25:07,702 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:25:07,702 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:25:09,214 - INFO - 127.0.0.1 - - [24/Jun/2025 08:25:09] "GET / HTTP/1.1" 200 -
+2025-06-24 08:25:09,269 - INFO - 127.0.0.1 - - [24/Jun/2025 08:25:09] "GET /static/css/main.cf33244e.css HTTP/1.1" 200 -
+2025-06-24 08:25:09,333 - INFO - 127.0.0.1 - - [24/Jun/2025 08:25:09] "GET /static/js/main.7270d3e6.js HTTP/1.1" 200 -
+2025-06-24 08:25:16,764 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:25:18,972 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:25:18,972 - INFO - 127.0.0.1 - - [24/Jun/2025 08:25:18] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:26:34,705 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:26:34,705 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:26:35,861 - INFO - 127.0.0.1 - - [24/Jun/2025 08:26:35] "GET / HTTP/1.1" 200 -
+2025-06-24 08:26:35,901 - INFO - 127.0.0.1 - - [24/Jun/2025 08:26:35] "GET /static/css/main.cf33244e.css HTTP/1.1" 200 -
+2025-06-24 08:26:35,975 - INFO - 127.0.0.1 - - [24/Jun/2025 08:26:35] "GET /static/js/main.8e3b0898.js HTTP/1.1" 200 -
+2025-06-24 08:26:54,546 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:26:56,728 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:26:56,728 - INFO - 127.0.0.1 - - [24/Jun/2025 08:26:56] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:29:54,537 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:29:54,537 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:29:58,168 - INFO - 127.0.0.1 - - [24/Jun/2025 08:29:58] "GET / HTTP/1.1" 200 -
+2025-06-24 08:29:58,226 - INFO - 127.0.0.1 - - [24/Jun/2025 08:29:58] "GET /static/css/main.29d1af99.css HTTP/1.1" 200 -
+2025-06-24 08:29:58,276 - INFO - 127.0.0.1 - - [24/Jun/2025 08:29:58] "GET /static/js/main.1aadd0d1.js HTTP/1.1" 200 -
+2025-06-24 08:30:04,683 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:30:06,148 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:30:06,148 - INFO - 127.0.0.1 - - [24/Jun/2025 08:30:06] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:30:06,495 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:30:06,495 - INFO - 127.0.0.1 - - [24/Jun/2025 08:30:06] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:34:12,808 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:34:12,808 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:34:19,012 - INFO - 127.0.0.1 - - [24/Jun/2025 08:34:19] "GET / HTTP/1.1" 200 -
+2025-06-24 08:34:19,057 - INFO - 127.0.0.1 - - [24/Jun/2025 08:34:19] "GET /static/css/main.6b544b47.css HTTP/1.1" 200 -
+2025-06-24 08:34:19,095 - INFO - 127.0.0.1 - - [24/Jun/2025 08:34:19] "GET /static/js/main.caeb1c3f.js HTTP/1.1" 200 -
+2025-06-24 08:34:23,157 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:34:24,582 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:34:24,582 - INFO - 127.0.0.1 - - [24/Jun/2025 08:34:24] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:36:17,163 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:36:17,163 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:36:18,595 - INFO - 127.0.0.1 - - [24/Jun/2025 08:36:18] "GET / HTTP/1.1" 200 -
+2025-06-24 08:36:18,663 - INFO - 127.0.0.1 - - [24/Jun/2025 08:36:18] "GET /static/css/main.bce745c9.css HTTP/1.1" 200 -
+2025-06-24 08:36:18,704 - INFO - 127.0.0.1 - - [24/Jun/2025 08:36:18] "GET /static/js/main.18118cd8.js HTTP/1.1" 200 -
+2025-06-24 08:36:26,927 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:36:29,017 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:36:29,017 - INFO - 127.0.0.1 - - [24/Jun/2025 08:36:29] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:39:42,342 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:39:42,342 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:39:48,151 - INFO - 127.0.0.1 - - [24/Jun/2025 08:39:48] "GET / HTTP/1.1" 200 -
+2025-06-24 08:39:49,981 - INFO - 127.0.0.1 - - [24/Jun/2025 08:39:49] "GET / HTTP/1.1" 200 -
+2025-06-24 08:39:50,023 - INFO - 127.0.0.1 - - [24/Jun/2025 08:39:50] "GET /static/css/main.63077ffe.css HTTP/1.1" 200 -
+2025-06-24 08:39:50,082 - INFO - 127.0.0.1 - - [24/Jun/2025 08:39:50] "GET /static/js/main.656e1040.js HTTP/1.1" 200 -
+2025-06-24 08:39:55,521 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:39:57,722 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:39:57,722 - INFO - 127.0.0.1 - - [24/Jun/2025 08:39:57] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:44:44,284 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:44:44,284 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:44:49,854 - INFO - 127.0.0.1 - - [24/Jun/2025 08:44:49] "GET / HTTP/1.1" 200 -
+2025-06-24 08:44:49,894 - INFO - 127.0.0.1 - - [24/Jun/2025 08:44:49] "GET /static/css/main.63077ffe.css HTTP/1.1" 200 -
+2025-06-24 08:44:49,955 - INFO - 127.0.0.1 - - [24/Jun/2025 08:44:49] "GET /static/js/main.3a5ea872.js HTTP/1.1" 200 -
+2025-06-24 08:44:54,474 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:44:56,615 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:44:56,615 - INFO - 127.0.0.1 - - [24/Jun/2025 08:44:56] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:47:30,779 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:47:30,779 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:47:34,019 - INFO - 127.0.0.1 - - [24/Jun/2025 08:47:34] "GET / HTTP/1.1" 200 -
+2025-06-24 08:47:34,060 - INFO - 127.0.0.1 - - [24/Jun/2025 08:47:34] "GET /static/css/main.47600a93.css HTTP/1.1" 200 -
+2025-06-24 08:47:34,121 - INFO - 127.0.0.1 - - [24/Jun/2025 08:47:34] "GET /static/js/main.84f31bea.js HTTP/1.1" 200 -
+2025-06-24 08:47:43,402 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:47:45,576 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:47:45,576 - INFO - 127.0.0.1 - - [24/Jun/2025 08:47:45] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:47:46,618 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:47:46,634 - INFO - 127.0.0.1 - - [24/Jun/2025 08:47:46] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:49:38,871 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:49:38,871 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:49:42,476 - INFO - 127.0.0.1 - - [24/Jun/2025 08:49:42] "GET / HTTP/1.1" 200 -
+2025-06-24 08:49:42,514 - INFO - 127.0.0.1 - - [24/Jun/2025 08:49:42] "GET /static/css/main.26eaae2c.css HTTP/1.1" 200 -
+2025-06-24 08:49:42,568 - INFO - 127.0.0.1 - - [24/Jun/2025 08:49:42] "GET /static/js/main.a73505ac.js HTTP/1.1" 200 -
+2025-06-24 08:49:48,705 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:49:50,810 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:49:50,810 - INFO - 127.0.0.1 - - [24/Jun/2025 08:49:50] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:53:07,985 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:53:07,986 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:53:10,895 - INFO - 127.0.0.1 - - [24/Jun/2025 08:53:10] "GET / HTTP/1.1" 200 -
+2025-06-24 08:53:10,935 - INFO - 127.0.0.1 - - [24/Jun/2025 08:53:10] "GET /static/css/main.26eaae2c.css HTTP/1.1" 200 -
+2025-06-24 08:53:10,986 - INFO - 127.0.0.1 - - [24/Jun/2025 08:53:10] "GET /static/js/main.3d8f06c4.js HTTP/1.1" 200 -
+2025-06-24 08:53:59,971 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:53:59,971 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:54:02,357 - INFO - 127.0.0.1 - - [24/Jun/2025 08:54:02] "GET / HTTP/1.1" 200 -
+2025-06-24 08:54:02,395 - INFO - 127.0.0.1 - - [24/Jun/2025 08:54:02] "GET /static/css/main.26eaae2c.css HTTP/1.1" 200 -
+2025-06-24 08:54:02,448 - INFO - 127.0.0.1 - - [24/Jun/2025 08:54:02] "GET /static/js/main.9b8af500.js HTTP/1.1" 200 -
+2025-06-24 08:54:04,198 - INFO - 127.0.0.1 - - [24/Jun/2025 08:54:04] "[36mGET / HTTP/1.1[0m" 304 -
+2025-06-24 08:54:04,222 - INFO - 127.0.0.1 - - [24/Jun/2025 08:54:04] "[36mGET /static/js/main.9b8af500.js HTTP/1.1[0m" 304 -
+2025-06-24 08:54:04,224 - INFO - 127.0.0.1 - - [24/Jun/2025 08:54:04] "[36mGET /static/css/main.26eaae2c.css HTTP/1.1[0m" 304 -
+2025-06-24 08:54:34,508 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:54:34,508 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:54:36,793 - INFO - 127.0.0.1 - - [24/Jun/2025 08:54:36] "GET / HTTP/1.1" 200 -
+2025-06-24 08:54:36,827 - INFO - 127.0.0.1 - - [24/Jun/2025 08:54:36] "GET /static/css/main.26eaae2c.css HTTP/1.1" 200 -
+2025-06-24 08:54:36,883 - INFO - 127.0.0.1 - - [24/Jun/2025 08:54:36] "GET /static/js/main.a73505ac.js HTTP/1.1" 200 -
+2025-06-24 08:55:04,176 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:55:04,176 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:55:07,278 - INFO - 127.0.0.1 - - [24/Jun/2025 08:55:07] "GET / HTTP/1.1" 200 -
+2025-06-24 08:55:07,321 - INFO - 127.0.0.1 - - [24/Jun/2025 08:55:07] "GET /static/css/main.c00e7d8a.css HTTP/1.1" 200 -
+2025-06-24 08:55:07,376 - INFO - 127.0.0.1 - - [24/Jun/2025 08:55:07] "GET /static/js/main.a1ce3ed4.js HTTP/1.1" 200 -
+2025-06-24 08:55:12,624 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:55:14,826 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:55:14,826 - INFO - 127.0.0.1 - - [24/Jun/2025 08:55:14] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 08:58:02,281 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 08:58:02,281 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 08:58:05,149 - INFO - 127.0.0.1 - - [24/Jun/2025 08:58:05] "GET / HTTP/1.1" 200 -
+2025-06-24 08:58:05,191 - INFO - 127.0.0.1 - - [24/Jun/2025 08:58:05] "GET /static/css/main.99232505.css HTTP/1.1" 200 -
+2025-06-24 08:58:05,246 - INFO - 127.0.0.1 - - [24/Jun/2025 08:58:05] "GET /static/js/main.aa5424b3.js HTTP/1.1" 200 -
+2025-06-24 08:58:08,350 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 08:58:10,309 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 08:58:10,316 - INFO - 127.0.0.1 - - [24/Jun/2025 08:58:10] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:01:38,538 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:01:38,538 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:01:42,009 - INFO - 127.0.0.1 - - [24/Jun/2025 09:01:42] "GET / HTTP/1.1" 200 -
+2025-06-24 09:01:42,048 - INFO - 127.0.0.1 - - [24/Jun/2025 09:01:42] "GET /static/css/main.fa0b3f81.css HTTP/1.1" 200 -
+2025-06-24 09:01:42,083 - INFO - 127.0.0.1 - - [24/Jun/2025 09:01:42] "GET /static/js/main.8afb235c.js HTTP/1.1" 200 -
+2025-06-24 09:01:45,909 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:01:48,152 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:01:48,159 - INFO - 127.0.0.1 - - [24/Jun/2025 09:01:48] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:06:22,930 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:06:22,930 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:06:25,426 - INFO - 127.0.0.1 - - [24/Jun/2025 09:06:25] "GET / HTTP/1.1" 200 -
+2025-06-24 09:06:25,467 - INFO - 127.0.0.1 - - [24/Jun/2025 09:06:25] "GET /static/css/main.2ad33dc3.css HTTP/1.1" 200 -
+2025-06-24 09:06:25,522 - INFO - 127.0.0.1 - - [24/Jun/2025 09:06:25] "GET /static/js/main.046e7368.js HTTP/1.1" 200 -
+2025-06-24 09:06:30,176 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:06:32,822 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:06:32,822 - INFO - 127.0.0.1 - - [24/Jun/2025 09:06:32] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:08:46,915 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:08:46,915 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:08:48,847 - INFO - 127.0.0.1 - - [24/Jun/2025 09:08:48] "GET / HTTP/1.1" 200 -
+2025-06-24 09:08:48,889 - INFO - 127.0.0.1 - - [24/Jun/2025 09:08:48] "GET /static/css/main.525d4c33.css HTTP/1.1" 200 -
+2025-06-24 09:08:48,946 - INFO - 127.0.0.1 - - [24/Jun/2025 09:08:48] "GET /static/js/main.3438bd62.js HTTP/1.1" 200 -
+2025-06-24 09:08:52,069 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:08:54,209 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:08:54,209 - INFO - 127.0.0.1 - - [24/Jun/2025 09:08:54] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:09:27,788 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:09:27,788 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:09:30,139 - INFO - 127.0.0.1 - - [24/Jun/2025 09:09:30] "GET / HTTP/1.1" 200 -
+2025-06-24 09:09:30,185 - INFO - 127.0.0.1 - - [24/Jun/2025 09:09:30] "GET /static/css/main.fa0b3f81.css HTTP/1.1" 200 -
+2025-06-24 09:09:30,238 - INFO - 127.0.0.1 - - [24/Jun/2025 09:09:30] "GET /static/js/main.8afb235c.js HTTP/1.1" 200 -
+2025-06-24 09:09:35,721 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:09:38,210 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:09:38,210 - INFO - 127.0.0.1 - - [24/Jun/2025 09:09:38] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:10:13,854 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:10:13,854 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:10:15,913 - INFO - 127.0.0.1 - - [24/Jun/2025 09:10:15] "GET / HTTP/1.1" 200 -
+2025-06-24 09:10:15,947 - INFO - 127.0.0.1 - - [24/Jun/2025 09:10:15] "GET /static/css/main.d84b05b2.css HTTP/1.1" 200 -
+2025-06-24 09:10:16,002 - INFO - 127.0.0.1 - - [24/Jun/2025 09:10:16] "GET /static/js/main.39740bd1.js HTTP/1.1" 200 -
+2025-06-24 09:10:19,387 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:10:21,644 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:10:21,651 - INFO - 127.0.0.1 - - [24/Jun/2025 09:10:21] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:13:40,199 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:13:40,199 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:13:42,867 - INFO - 127.0.0.1 - - [24/Jun/2025 09:13:42] "GET / HTTP/1.1" 200 -
+2025-06-24 09:13:42,910 - INFO - 127.0.0.1 - - [24/Jun/2025 09:13:42] "GET /static/css/main.d84b05b2.css HTTP/1.1" 200 -
+2025-06-24 09:13:42,964 - INFO - 127.0.0.1 - - [24/Jun/2025 09:13:42] "GET /static/js/main.01659421.js HTTP/1.1" 200 -
+2025-06-24 09:13:46,995 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:13:49,134 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:13:49,134 - INFO - 127.0.0.1 - - [24/Jun/2025 09:13:49] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:14:38,462 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:14:38,462 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:14:40,468 - INFO - 127.0.0.1 - - [24/Jun/2025 09:14:40] "GET / HTTP/1.1" 200 -
+2025-06-24 09:14:40,512 - INFO - 127.0.0.1 - - [24/Jun/2025 09:14:40] "GET /static/css/main.56b639c6.css HTTP/1.1" 200 -
+2025-06-24 09:14:40,567 - INFO - 127.0.0.1 - - [24/Jun/2025 09:14:40] "GET /static/js/main.b589e8e8.js HTTP/1.1" 200 -
+2025-06-24 09:14:43,418 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:14:45,606 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:14:45,606 - INFO - 127.0.0.1 - - [24/Jun/2025 09:14:45] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:18:32,945 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:18:32,945 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:18:35,825 - INFO - 127.0.0.1 - - [24/Jun/2025 09:18:35] "GET / HTTP/1.1" 200 -
+2025-06-24 09:18:35,867 - INFO - 127.0.0.1 - - [24/Jun/2025 09:18:35] "GET /static/css/main.7473d0dc.css HTTP/1.1" 200 -
+2025-06-24 09:18:35,918 - INFO - 127.0.0.1 - - [24/Jun/2025 09:18:35] "GET /static/js/main.076f91d6.js HTTP/1.1" 200 -
+2025-06-24 09:18:39,597 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:18:41,901 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:18:41,901 - INFO - 127.0.0.1 - - [24/Jun/2025 09:18:41] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:24:36,311 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:24:36,311 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:24:40,270 - INFO - 127.0.0.1 - - [24/Jun/2025 09:24:40] "GET / HTTP/1.1" 200 -
+2025-06-24 09:24:40,315 - INFO - 127.0.0.1 - - [24/Jun/2025 09:24:40] "GET /static/css/main.56b639c6.css HTTP/1.1" 200 -
+2025-06-24 09:24:40,359 - INFO - 127.0.0.1 - - [24/Jun/2025 09:24:40] "GET /static/js/main.b589e8e8.js HTTP/1.1" 200 -
+2025-06-24 09:24:42,936 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:24:45,006 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:24:45,006 - INFO - 127.0.0.1 - - [24/Jun/2025 09:24:45] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:26:52,461 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:26:52,461 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:26:54,781 - INFO - 127.0.0.1 - - [24/Jun/2025 09:26:54] "[36mGET / HTTP/1.1[0m" 304 -
+2025-06-24 09:26:54,803 - INFO - 127.0.0.1 - - [24/Jun/2025 09:26:54] "[36mGET /static/css/main.56b639c6.css HTTP/1.1[0m" 304 -
+2025-06-24 09:26:54,810 - INFO - 127.0.0.1 - - [24/Jun/2025 09:26:54] "[36mGET /static/js/main.b589e8e8.js HTTP/1.1[0m" 304 -
+2025-06-24 09:26:59,045 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:27:00,490 - WARNING - Failed to capture screenshot for URL: https://www.youtube.com/
+2025-06-24 09:27:01,199 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:27:01,199 - INFO - 127.0.0.1 - - [24/Jun/2025 09:27:01] "POST /api/url/predict HTTP/1.1" 200 -
+2025-06-24 09:29:39,975 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.195:5001
+2025-06-24 09:29:39,976 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-24 09:29:42,941 - INFO - 127.0.0.1 - - [24/Jun/2025 09:29:42] "[36mGET / HTTP/1.1[0m" 304 -
+2025-06-24 09:29:42,968 - INFO - 127.0.0.1 - - [24/Jun/2025 09:29:42] "[36mGET /static/js/main.b589e8e8.js HTTP/1.1[0m" 304 -
+2025-06-24 09:29:42,969 - INFO - 127.0.0.1 - - [24/Jun/2025 09:29:42] "[36mGET /static/css/main.56b639c6.css HTTP/1.1[0m" 304 -
+2025-06-24 09:29:46,202 - INFO - Đã tải mô hình: random_forest_URL_pickle
+2025-06-24 09:29:57,197 - INFO - Dự đoán cho URL/text 'https://www.youtube.com/': rf_confidence=0.2151, result=Hợp pháp
+2025-06-24 09:29:57,197 - INFO - 127.0.0.1 - - [24/Jun/2025 09:29:57] "POST /api/url/predict HTTP/1.1" 200 -
