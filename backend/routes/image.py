@@ -36,7 +36,7 @@ def predict_url_from_qr(url):
     rf_features = pd.DataFrame([extract_features(url)], columns=URL_FEATURES)
     rf_pred = rf_model.predict_proba(rf_features)[:, 1][0]
     ensemble = compute_ensemble_score(rf_pred)
-    prediction = "Phishing" if ensemble > threshold else "Hợp pháp"
+    prediction = "nguy hiểm" if ensemble > threshold else "hợp pháp"
     legitimate_prob = 1.0 - rf_pred
     features_dict = rf_features.to_dict(orient='records')[0]
     return {

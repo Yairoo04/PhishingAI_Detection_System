@@ -45,3 +45,19 @@
 2025-06-24 10:18:33,489 - ERROR - Không thể tải mô hình random_forest_URL_pickle: Tệp mô hình models\random_forest_URL.pkl không tồn tại
 2025-06-24 10:18:33,489 - ERROR - Lỗi khi xử lý URL/text: Tệp mô hình models\random_forest_URL.pkl không tồn tại
 2025-06-24 10:18:33,490 - INFO - 127.0.0.1 - - [24/Jun/2025 10:18:33] "[35m[1mPOST /api/url/predict HTTP/1.1[0m" 500 -
+2025-06-25 14:40:12,385 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.16:5001
+2025-06-25 14:40:12,385 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-25 14:40:12,385 - INFO -  * Restarting with stat
+2025-06-25 14:40:16,771 - WARNING -  * Debugger is active!
+2025-06-25 14:40:16,771 - INFO -  * Debugger PIN: 455-044-180
+2025-06-25 14:40:19,921 - INFO - 192.168.1.16 - - [25/Jun/2025 14:40:19] "[36mGET / HTTP/1.1[0m" 304 -
+2025-06-25 14:40:19,960 - INFO - 192.168.1.16 - - [25/Jun/2025 14:40:19] "[36mGET /static/js/main.d260021c.js HTTP/1.1[0m" 304 -
+2025-06-25 14:40:19,978 - INFO - 192.168.1.16 - - [25/Jun/2025 14:40:19] "[36mGET /static/css/main.a18838e1.css HTTP/1.1[0m" 304 -
+2025-06-25 14:40:21,559 - INFO - 192.168.1.16 - - [25/Jun/2025 14:40:21] "[36mGET /static/media/boxicons.df635aaf04cd75132f62.woff2 HTTP/1.1[0m" 304 -
+2025-06-25 14:40:26,171 - ERROR - Lỗi dự đoán CNN cho EZRygP_qrcode.png: [Errno 2] No such file or directory: './Uploads\\EZRygP_qrcode.png'
+2025-06-25 14:40:26,172 - INFO - 192.168.1.16 - - [25/Jun/2025 14:40:26] "[35m[1mPOST /api/image/predict HTTP/1.1[0m" 500 -
+2025-06-25 14:40:36,340 - ERROR - Lỗi không xác định khi xử lý tệp .eml phishing_email_523.eml: [Errno 2] No such file or directory: './Uploads\\phishing_email_523.eml'
+2025-06-25 14:40:36,340 - INFO - 192.168.1.16 - - [25/Jun/2025 14:40:36] "[35m[1mPOST /api/email/predict HTTP/1.1[0m" 500 -

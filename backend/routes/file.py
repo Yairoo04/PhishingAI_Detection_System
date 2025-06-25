@@ -96,8 +96,12 @@ def predict_file():
         # Ghi lại file tạm để phân tích đặc trưng
         file.stream.seek(0)  # reset lại con trỏ file
 
+
+
+
         if not allowed_file(filename):
             return jsonify({"error": "Loại tệp không hợp lệ"}), 400
+
 
         with temp_file(file, filename) as file_path:
             features = extract_pdf_features(file_path)
@@ -105,7 +109,7 @@ def predict_file():
             rf_model = model_registry.load_model("random_forest_file", "pickle")
             rf_prob = rf_model.predict_proba(feature_df)[0][1]
             ensemble = compute_ensemble_score(rf_prob)
-            result = "Phishing" if ensemble > threshold else "Hợp pháp"  # Sử dụng tiếng Việt
+            result = "nguy hiểm" if ensemble > threshold else "hợp pháp"  # Sử dụng tiếng Việt
             legitimate_prob = round((1.0 - rf_prob) * 100, 2)  # Tính xác suất hợp pháp và nhân với 100
             rf_confidence = round(float(rf_prob) * 100, 2)  # Nhân với 100 để thành phần trăm
             logger.info(f"Dự đoán tệp {filename}: rf_confidence={rf_confidence}%, result={result}")

@@ -1,11 +1,12 @@
 from flask import Blueprint, request, jsonify
 import pandas as pd
+import urllib.parse
 from utils.model_registry import ModelRegistry
 from utils.common import compute_ensemble_score
 from utils.url_features import extract_features
 from utils.url_prediction import load_model, predict_url
 from utils.url_screenshot import get_screenshot_base64
-from utils.url_third_party import check_virustotal, check_google_safe_browsing
+from utils.url_third_party import check_virustotal, check_google_safe_browsing,check_urlvoid
 import logging
 import os
 
@@ -51,9 +52,14 @@ def predict_url_endpoint():
             logger.warning(f"Failed to capture screenshot for URL: {input_text}")
 
         # Đánh giá bên thứ ba
+        parsed = urllib.parse.urlparse(input_text)
+        domain = parsed.netloc or parsed.path  # fallback nếu không có scheme
+
         third_party_eval = {
             "virusTotal": check_virustotal(input_text),
-            "googleSafeBrowsing": check_google_safe_browsing(input_text)
+            "googleSafeBrowsing": check_google_safe_browsing(input_text),
+            "urlVoid": check_urlvoid(domain)
+
         }
 
         logger.info(f"Dự đoán cho URL/text '{input_text}': rf_confidence={phishing_prob:.4f}, result={result}")

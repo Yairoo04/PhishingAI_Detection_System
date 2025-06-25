@@ -40,6 +40,38 @@ def check_virustotal(url):
         print(f"Lỗi khi kiểm tra VirusTotal: {e}")
         return {"status": "Lỗi", "details": "Không thể kiểm tra VirusTotal.", "color": "gray"}
 
+
+def check_urlvoid(domain):
+    """Kiểm tra domain với URLVoid (qua apivoid)."""
+    API_KEY = "8o2o1rgWocqCGPwr3fXEzioDGYJHR55C_N30uZ8-fc85eixa-Ynj0WXSzjlRnkpB"
+    try:
+        endpoint = f"https://endpoint.apivoid.com/urlrep/v1/pay-as-you-go/?key={API_KEY}&host={domain}"
+        response = requests.get(endpoint)
+        response.raise_for_status()
+        data = response.json()
+        detections = data.get("data", {}).get("report", {}).get("blacklists", {}).get("detections", 0)
+
+        if detections > 0:
+            return {
+                "status": "Nguy hiểm",
+                "details": f"{detections} blacklist phát hiện",
+                "color": "red"
+            }
+        else:
+            return {
+                "status": "An toàn",
+                "details": "Không có blacklist",
+                "color": "green"
+            }
+    except Exception as e:
+        print(f"[URLVoid] Lỗi khi kiểm tra domain {domain}: {e}")
+        return {
+            "status": "Lỗi",
+            "details": "Không thể kiểm tra URLVoid.",
+            "color": "gray"
+        }
+
+
 def check_google_safe_browsing(url):
     """Kiểm tra URL với Google Safe Browsing."""
     try:
@@ -71,4 +103,5 @@ def check_google_safe_browsing(url):
         return {"status": "Lỗi", "details": "Không thể kiểm tra Google Safe Browsing.", "color": "gray"}
     except Exception as e:
         print(f"Lỗi khi kiểm tra Google Safe Browsing: {e}")
-        return {"status": "Lỗi", "details": "Không thể kiểm tra Google Safe Browsing.", "color": "gray"}
+        return {"status": "Lỗi", "details": "Không thể kiểm tra Google Safe Browsing.", "color": "gray"}\
+        
