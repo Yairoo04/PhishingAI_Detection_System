@@ -34,6 +34,7 @@ const App = () => {
         <p className="text-center text-gray-600 mb-10">
           Nhập URL, tải hình ảnh, email hoặc tập tin để kiểm tra độ an toàn.
         </p>
+
         {/* Smaller Input Section */}
         <div className="max-w-3xl mx-auto bg-white bg-opacity-90 backdrop-blur-lg rounded-lg shadow-lg p-6 mb-8">
           <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
@@ -46,7 +47,7 @@ const App = () => {
         </div>
         {loading && (
           <div className="mt-8 flex justify-center">
-            <div className="w-8 h-8 border-4 border-gray-200 border-t-blue-500 rounded-full animate-spin"></div>
+            <div className="w-8 h-8 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin"></div>
           </div>
         )}
         {result && (
@@ -54,7 +55,6 @@ const App = () => {
             <div className="flex flex-row space-x-4">
               {/* Left Side: Screenshot and Third-Party Evaluations */}
               <div className="w-2/5 p-4 bg-white border rounded-lg shadow"> 
-                {/* Increased width from w-1/3 to w-2/5 to make left side larger */}
                 {result.screenshot_url && (
                   <div className="mb-4">
                     <p className="text-md font-semibold mb-2 text-gray-700">Ảnh chụp màn hình:</p>
@@ -75,28 +75,59 @@ const App = () => {
                       <p className="text-sm">{result.third_party_eval.googleSafeBrowsing.details}</p>
                     </div>
                   )}
+
+                  {result.third_party_eval?.scanii && (
+                  <div className={`p-4 rounded-lg ${getColorClass(result.third_party_eval.scanii.status)} border`}>
+                    <p className="text-md font-semibold">Scanii: <span className="font-bold">{result.third_party_eval.scanii.status}</span></p>
+                    <p className="text-sm">{result.third_party_eval.scanii.details}</p>
+                  </div>
+                )}
+
                 </div>
               </div>
 
               {/* Right Side: Analysis Results and Characteristics */}
               <div className="w-3/5 p-4 bg-white border rounded-lg shadow">
-                {/* Increased width from w-2/3 to w-3/5 to make right side larger */}
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Kết quả phân tích</h2>
-                <div className={`p-4 rounded-lg mb-6 ${getColorClass(result.prediction)} border`}>
-                  <p className="text-lg font-semibold">Phân loại: <span className="font-bold">{result.prediction}</span></p>
-                  <div className="mt-3">
-                    <p className="text-md">Xác suất Phishing: <span className="font-bold text-lg">{result.rf_confidence}%</span></p>
-                    <div className="w-full bg-gray-200 rounded-full h-3">
-                      <div className="bg-red-600 h-3 rounded-full" style={{ width: `${result.rf_confidence}%` }}></div>
+                
+                {result.qr_results ? (
+                  <div>
+                    {result.qr_results.map((qr, index) => (
+                      <div key={index} className={`p-4 rounded-lg mb-6 ${getColorClass(qr.prediction)} border`}>
+                        <p className="text-lg font-semibold">URL từ mã QR: <span className="font-bold">{qr.qr_url}</span></p>
+                        <p className="text-lg font-semibold">Phân loại: <span className="font-bold">{qr.prediction}</span></p>
+                        <div className="mt-3">
+                          <p className="text-md">Xác suất Phishing: <span className="font-bold text-lg">{qr.rf_confidence || 0}%</span></p>
+                          <div className="w-full bg-gray-200 rounded-full h-3">
+                            <div className="bg-red-600 h-3 rounded-full" style={{ width: `${qr.rf_confidence || 0}%` }}></div>
+                          </div>
+                        </div>
+                        <div className="mt-3">
+                          <p className="text-md">Xác suất Hợp pháp: <span className="font-bold text-lg">{qr.legitimate_prob || 0}%</span></p>
+                          <div className="w-full bg-gray-200 rounded-full h-3">
+                            <div className="bg-green-600 h-3 rounded-full" style={{ width: `${qr.legitimate_prob || 0}%` }}></div>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className={`p-4 rounded-lg mb-6 ${getColorClass(activeTab === 'file' ? result.result : result.prediction)} border`}>
+                    <p className="text-lg font-semibold">Phân loại: <span className="font-bold">{activeTab === 'file' ? result.result : result.prediction}</span></p>
+                    <div className="mt-3">
+                      <p className="text-md">Xác suất Phishing: <span className="font-bold text-lg">{result.rf_confidence || 0}%</span></p>
+                      <div className="w-full bg-gray-200 rounded-full h-3">
+                        <div className="bg-red-600 h-3 rounded-full" style={{ width: `${result.rf_confidence || 0}%` }}></div>
+                      </div>
+                    </div>
+                    <div className="mt-3">
+                      <p className="text-md">Xác suất Hợp pháp: <span className="font-bold text-lg">{result.legitimate_prob || 0}%</span></p>
+                      <div className="w-full bg-gray-200 rounded-full h-3">
+                        <div className="bg-green-600 h-3 rounded-full" style={{ width: `${result.legitimate_prob || 0}%` }}></div>
+                      </div>
                     </div>
                   </div>
-                  <div className="mt-3">
-                    <p className="text-md">Xác suất Hợp pháp: <span className="font-bold text-lg">{result.legitimate_prob}%</span></p>
-                    <div className="w-full bg-gray-200 rounded-full h-3">
-                      <div className="bg-green-600 h-3 rounded-full" style={{ width: `${result.legitimate_prob}%` }}></div>
-                    </div>
-                  </div>
-                </div>
+                )}
                 {features && !result.qr_results && <FeaturesDisplay features={features} />}
               </div>
             </div>
@@ -109,6 +140,8 @@ const App = () => {
 
 // Assuming getColorClass is defined here for consistency
 const getColorClass = (status) => {
+  if (!status || typeof status !== 'string') return 'bg-gray-100 text-gray-700';
+
   switch (status.toLowerCase()) {
     case 'phishing':
     case 'nguy hiểm':

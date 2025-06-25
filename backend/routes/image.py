@@ -26,6 +26,26 @@ URL_FEATURES = [
 def allowed_file(filename: str) -> bool:
     return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_IMAGE_EXTENSIONS
 
+def predict_url_from_qr(url):
+    threshold = 0.5
+    rf_model = model_registry.load_model("random_forest_URL", "pickle")
+    if rf_model is None:
+        logger.error("Không thể tải mô hình random_forest_URL")
+        return {"prediction": "Đang xử lý", "rf_confidence": 0, "legitimate_prob": 0, "features": {}}
+
+    rf_features = pd.DataFrame([extract_features(url)], columns=URL_FEATURES)
+    rf_pred = rf_model.predict_proba(rf_features)[:, 1][0]
+    ensemble = compute_ensemble_score(rf_pred)
+    prediction = "nguy hiểm" if ensemble > threshold else "hợp pháp"
+    legitimate_prob = 1.0 - rf_pred
+    features_dict = rf_features.to_dict(orient='records')[0]
+    return {
+        "prediction": prediction,
+        "rf_confidence": round(float(rf_pred) * 100, 2),
+        "legitimate_prob": round(float(legitimate_prob) * 100, 2),
+        "features": features_dict
+    }
+
 @bp.route("/predict", methods=["POST"])
 def predict_image():
     threshold = 0.5
@@ -50,28 +70,22 @@ def predict_image():
                 for qr in qr_codes:
                     url = qr.data.decode("utf-8")
                     logger.info(f"Phát hiện mã QR: {url}")
-                    rf_features = pd.DataFrame([extract_features(url)], columns=URL_FEATURES)
-                    rf_model = model_registry.load_model("random_forest_URL", "pickle")
-                    rf_pred = rf_model.predict_proba(rf_features)[:, 1][0]
-                    ensemble = compute_ensemble_score(rf_pred)
-                    result = "Phishing" if ensemble > threshold else "Legitimate"
-                    features_dict = rf_features.to_dict(orient='records')[0]
-                    qr_results.append({
-                        "qr_url": url,
-                        "rf_confidence": round(float(rf_pred), 4),
-                        "result": result,
-                        "features": features_dict
-                    })
+                    url_result = predict_url_from_qr(url)
+                    url_result["qr_url"] = url  # Thêm URL vào kết quả
+                    qr_results.append(url_result)
                 return jsonify({"qr_results": qr_results}), 200
 
+            # Nếu không có mã QR, xử lý hình ảnh bằng CNN
             cnn_input = preprocess_image_for_cnn(image)
             cnn_model = model_registry.load_model("cnn_phishing_image", "keras")
             cnn_pred = float(cnn_model.predict(cnn_input, verbose=0)[0][0])
-            result = "Phishing" if cnn_pred > threshold else "Legitimate"
-            logger.info(f"Dự đoán hình ảnh cho {filename}: cnn_confidence={cnn_pred:.4f}, result={result}")
+            legitimate_prob = 1.0 - cnn_pred
+            prediction = "nguy hiểm" if cnn_pred > threshold else "hợp pháp"
+            logger.info(f"Dự đoán hình ảnh cho {filename}: cnn_confidence={cnn_pred:.4f}, prediction={prediction}")
             return jsonify({
-                "cnn_confidence": round(float(cnn_pred), 4),
-                "result": result,
+                "prediction": prediction,
+                "rf_confidence": round(float(cnn_pred) * 100, 2),  # Nhân với 100 để thành phần trăm
+                "legitimate_prob": round(float(legitimate_prob) * 100, 2),  # Nhân với 100
                 "filename": filename
             }), 200
     except Exception as e:
