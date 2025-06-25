@@ -4,7 +4,6 @@ import URLChecker from './components/URLChecker';
 import ImageChecker from './components/ImageChecker';
 import FileChecker from './components/FileChecker';
 import EmailChecker from './components/EmailChecker';
-import ResultDisplay from './components/ResultDisplay';
 import FeaturesDisplay from './components/FeaturesDisplay';
 
 const App = () => {
@@ -16,7 +15,9 @@ const App = () => {
     email: { result: null, features: null },
   });
   const [loading, setLoading] = useState(false);
-  const [activeAnalysisTab, setActiveAnalysisTab] = useState('headers'); // Tab phân tích mặc định
+  const [activeAnalysisTab, setActiveAnalysisTab] = useState('headers');
+  const [urlToCheck, setUrlToCheck] = useState('');
+  const [triggerCheck, setTriggerCheck] = useState(false);
 
   const tabs = [
     { id: 'url', label: 'Kiểm Tra URL' },
@@ -37,29 +38,32 @@ const App = () => {
       ...prev,
       [activeTab]: { result: data, features: featuresData },
     }));
-  };
+    setTriggerCheck(false);
 
-  const handleSwitchToURLCheck = async (urlDomain) => {
-    setActiveTab('url');
-    setLoading(true);
-    // Tạo URL đầy đủ với https
-    const fullUrl = `https://${urlDomain}`;
-    try {
-      // Giả sử URLChecker có phương thức để xử lý URL và gọi API
-      const response = await fetch('/api/url/predict', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: fullUrl }),
-      });
-      const data = await response.json();
-      handleResult(data, null); // Cập nhật kết quả từ URL check
-    } catch (error) {
-      console.error('Lỗi khi kiểm tra URL:', error);
-      handleResult({ error: 'Không thể kiểm tra URL' }, null);
-    } finally {
-      setLoading(false);
+    // Nếu là tab Image và có QR code với URL, chuyển sang tab URL
+    if (activeTab === 'image' && data.qr_results && data.qr_results.length > 0) {
+      const qrUrl = data.qr_results[0].qr_url;
+      if (qrUrl) {
+        setUrlToCheck(qrUrl);
+        setActiveTab('url');
+        setTriggerCheck(true);
+      }
     }
   };
+
+  const handleSwitchToURLCheck = (urlDomain) => {
+    const fullUrl = `https://${urlDomain}`;
+    setUrlToCheck(fullUrl);
+    setActiveTab('url');
+    setTriggerCheck(true);
+  };
+
+  useEffect(() => {
+    if (activeTab !== 'url') {
+      setUrlToCheck('');
+      setTriggerCheck(false);
+    }
+  }, [activeTab]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-100 via-purple-100 to-pink-100 p-4">
@@ -71,175 +75,213 @@ const App = () => {
           Nhập URL, tải hình ảnh, email hoặc tập tin để kiểm tra độ an toàn.
         </p>
 
-        {/* Smaller Input Section */}
-        <div className="max-w-3xl mx-auto bg-white bg-opacity-90 backdrop-blur-lg rounded-lg shadow-lg p-6 mb-8">
+        <div className="max-w-3xl mx-auto bg-white bg-opacity-90 backdrop-blur-lg rounded-lg shadow-lg p-6">
           <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
           <div className="mt-6">
-            {activeTab === 'url' && <URLChecker setLoading={setLoading} onResult={handleResult} />}
+            {activeTab === 'url' && (
+              <URLChecker
+                setLoading={setLoading}
+                onResult={handleResult}
+                urlToCheck={urlToCheck}
+                triggerCheck={triggerCheck}
+              />
+            )}
             {activeTab === 'image' && <ImageChecker setLoading={setLoading} onResult={handleResult} />}
             {activeTab === 'file' && <FileChecker setLoading={setLoading} onResult={handleResult} />}
             {activeTab === 'email' && <EmailChecker setLoading={setLoading} onResult={handleResult} />}
           </div>
         </div>
+
         {loading && (
           <div className="max-w-7xl mx-auto rounded-lg p-6">
             <div className="flex flex-row space-x-4">
-              {/* Left Side: Skeleton for Analysis */}
-              <div className="w-1/2 p-4 bg-white border rounded-lg shadow">
+              <div className="w-2/5 p-4 bg-white border rounded-lg shadow">
                 <div className="loading" style={{ height: '200px', width: '100%', borderRadius: '5px' }}></div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-4 mt-4">Phân tích chi tiết</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-4 mt-4">Đánh giá từ bên thứ ba</h3>
                 <div className="space-y-4">
                   <div className="loading" style={{ height: '80px', width: '100%', borderRadius: '5px' }}></div>
                   <div className="loading" style={{ height: '80px', width: '100%', borderRadius: '5px' }}></div>
                   <div className="loading" style={{ height: '80px', width: '100%', borderRadius: '5px' }}></div>
-                  <div className="loading" style={{ height: '80px', width: '100%', borderRadius: '5px' }}></div> {/* Thêm cho URL */}
                 </div>
               </div>
-
-              {/* Right Side: Skeleton for Results */}
-              <div className="w-1/2 p-4 bg-white border rounded-lg shadow">
-                <div className="loading" style={{ height: '600px', width: '100%', borderRadius: '5px' }}></div>
+              <div className="w-3/5 p-4 bg-white border rounded-lg shadow">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">Kết quả phân tích</h2>
+                <div className="loading" style={{ height: '200px', width: '100%', borderRadius: '5px' }}></div>
               </div>
             </div>
           </div>
         )}
+
         {!loading && tabResults[activeTab].result && (
           <div className="max-w-7xl mx-auto rounded-lg p-6 transition-opacity duration-500 opacity-100" style={{ animation: 'fadeIn 0.5s ease-in-out' }}>
             <div className="flex flex-row space-x-4">
-              {/* Left Side: Analysis and URLs */}
-              <div className="w-1/2 p-4 bg-white border rounded-lg shadow">
-                <h3 className="text-xl font-semibold text-gray-800 mb-4">Phân tích chi tiết</h3>
-                <div className="mb-4">
-                  <Tabs tabs={analysisTabs} activeTab={activeAnalysisTab} setActiveTab={setActiveAnalysisTab} />
-                </div>
-                {activeAnalysisTab === 'headers' && tabResults[activeTab].result.email_details && (
-                  <div className="p-4 bg-gray-50 rounded-lg border">
-                    <h4 className="text-lg font-semibold mb-2">Headers</h4>
-                    <ul className="list-disc pl-5">
-                      <li><strong>From:</strong> {tabResults[activeTab].result.email_details.headers.From || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>Display Name:</strong> {tabResults[activeTab].result.email_details.headers.DisplayName || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>Sender:</strong> {tabResults[activeTab].result.email_details.headers.Sender || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>To:</strong> {tabResults[activeTab].result.email_details.headers.To || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>CC:</strong> {tabResults[activeTab].result.email_details.headers.CC || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>In-Reply-To:</strong> {tabResults[activeTab].result.email_details.headers["In-Reply-To"] || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>Timestamp:</strong> {tabResults[activeTab].result.email_details.headers.Timestamp  || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>Reply-To:</strong> {tabResults[activeTab].result.email_details.headers["Reply-To"] || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>Message-ID:</strong> {tabResults[activeTab].result.email_details.headers["Message-ID"] || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>Return-Path:</strong> {tabResults[activeTab].result.email_details.headers["Return-Path"] || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>Originating IP:</strong> {tabResults[activeTab].result.email_details.headers.OriginatingIP || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>rDNS:</strong> {tabResults[activeTab].result.email_details.headers.rDNS || <span className="italic text-gray-400">None</span>}</li>
-                    </ul>
-                  </div>
-                )}
-                {activeAnalysisTab === 'received' && tabResults[activeTab].result.email_details && (
-                  <div className="p-4 bg-gray-50 rounded-lg border">
-                    <h4 className="text-lg font-semibold mb-2">Received Lines</h4>
-                    <div className="space-y-4">
-                      {tabResults[activeTab].result.email_details.received_lines.map((hop, index) => (
-                        <div key={index} className="p-2 border rounded">
-                          <p><strong>{hop.Hop}:</strong></p>
+              {/* Left Side */}
+              {(activeTab === 'url' || activeTab === 'file' || activeTab === 'email') && (
+                <div className="w-2/5 p-4 bg-white border rounded-lg shadow">
+                  {activeTab === 'url' && tabResults[activeTab].result.screenshot_url && (
+                    <div className="mb-4">
+                      <p className="text-md font-semibold mb-2 text-gray-700">Ảnh chụp màn hình:</p>
+                      <img
+                        src={tabResults[activeTab].result.screenshot_url}
+                        alt="Screenshot"
+                        className="w-full max-w-md rounded-lg border-2 border-gray-300 shadow-md"
+                      />
+                    </div>
+                  )}
+
+                  {activeTab === 'email' && (
+                    <>
+                      <h3 className="text-xl font-semibold text-gray-800 mb-4">Phân tích chi tiết</h3>
+                      <div className="mb-4">
+                        <Tabs tabs={analysisTabs} activeTab={activeAnalysisTab} setActiveAnalysisTab={setActiveAnalysisTab} />
+                      </div>
+                      {activeAnalysisTab === 'headers' && tabResults[activeTab].result.email_details && (
+                        <div className="p-4 bg-gray-50 rounded-lg border">
+                          <h4 className="text-lg font-semibold mb-2">Headers</h4>
                           <ul className="list-disc pl-5">
-                            <li><strong>Timestamp:</strong> {hop.Timestamp || <span className="italic text-gray-400">None</span>}</li>
-                            <li><strong>Received From:</strong> {hop.ReceivedFrom || <span className="italic text-gray-400">None</span>}</li>
-                            <li><strong>Received By:</strong> {hop.ReceivedBy || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>From:</strong> {tabResults[activeTab].result.email_details.headers.From || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>Display Name:</strong> {tabResults[activeTab].result.email_details.headers.DisplayName || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>Sender:</strong> {tabResults[activeTab].result.email_details.headers.Sender || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>To:</strong> {tabResults[activeTab].result.email_details.headers.To || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>CC:</strong> {tabResults[activeTab].result.email_details.headers.CC || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>In-Reply-To:</strong> {tabResults[activeTab].result.email_details.headers["In-Reply-To"] || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>Timestamp:</strong> {tabResults[activeTab].result.email_details.headers.Timestamp || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>Reply-To:</strong> {tabResults[activeTab].result.email_details.headers["Reply-To"] || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>Message-ID:</strong> {tabResults[activeTab].result.email_details.headers["Message-ID"] || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>Return-Path:</strong> {tabResults[activeTab].result.email_details.headers["Return-Path"] || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>Originating IP:</strong> {tabResults[activeTab].result.email_details.headers.OriginatingIP || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>rDNS:</strong> {tabResults[activeTab].result.email_details.headers.rDNS || <span className="italic text-gray-400">None</span>}</li>
                           </ul>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-                {activeAnalysisTab === 'x_headers' && tabResults[activeTab].result.email_details && (
-                  <div className="p-4 bg-gray-50 rounded-lg border">
-                    <h4 className="text-lg font-semibold mb-2">X-Headers</h4>
-                    <ul className="list-disc pl-5">
-                      <li><strong>X-Priority:</strong> {tabResults[activeTab].result.email_details.x_headers["x-priority"] || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>X-MSMail-Priority:</strong> {tabResults[activeTab].result.email_details.x_headers["x-msmail-priority"] || <span className="italic text-gray-400">None</span>}</li>
-                      <li><strong>X-OriginalArrivalTime:</strong> {tabResults[activeTab].result.email_details.x_headers["x-originalarrivaltime"] || <span className="italic text-gray-400">None</span>}</li>
-                    </ul>
-                  </div>
-                )}
-                {activeAnalysisTab === 'security' && tabResults[activeTab].result.email_details && (
-                  <div className="p-4 bg-gray-50 rounded-lg border">
-                    <h4 className="text-lg font-semibold mb-2">Security</h4>
-                    <div className="ml-4">
-                      <h5 className="font-semibold">SPF</h5>
-                      <ul className="list-disc pl-5">
-                        <li><strong>Result:</strong> {tabResults[activeTab].result.email_details.security.SPF.Result || <span className="italic text-gray-400">None</span>}</li>
-                        <li><strong>Originating IP:</strong> {tabResults[activeTab].result.email_details.security.SPF.OriginatingIP || <span className="italic text-gray-400">None</span>}</li>
-                        <li><strong>rDNS:</strong> {tabResults[activeTab].result.email_details.security.SPF.rDNS || <span className="italic text-gray-400">None</span>}</li>
-                        <li><strong>Return-Path Domain:</strong> {tabResults[activeTab].result.email_details.security.SPF.ReturnPathDomain || <span className="italic text-gray-400">None</span>}</li>
-                        <li><strong>SPF Record:</strong> {tabResults[activeTab].result.email_details.security.SPF.SPFRecord || <span className="italic text-gray-400">None</span>}</li>
-                      </ul>
-                      <h5 className="font-semibold mt-2">DKIM</h5>
-                      <ul className="list-disc pl-5">
-                        <li><strong>Result:</strong> {tabResults[activeTab].result.email_details.security.DKIM.Result || <span className="italic text-gray-400">None</span>}</li>
-                        <li><strong>Verifications:</strong> {tabResults[activeTab].result.email_details.security.DKIM.Verifications || <span className="italic text-gray-400">None</span>}</li>
-                      </ul>
-                      <h5 className="font-semibold mt-2">DMARC</h5>
-                      <ul className="list-disc pl-5">
-                        <li><strong>Result:</strong> {tabResults[activeTab].result.email_details.security.DMARC.Result || <span className="italic text-gray-400">None</span>}</li>
-                        <li><strong>From Domain:</strong> {tabResults[activeTab].result.email_details.security.DMARC.FromDomain || <span className="italic text-gray-400">None</span>}</li>
-                      </ul>
-                    </div>
-                  </div>
-                )}
-
-                {/* Đánh giá từ bên thứ ba */}
-                {activeTab === 'email' && tabResults[activeTab].result.email_details && (
-                  <div className="mt-4">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-4">Đánh giá từ bên thứ ba</h3>
-                    <div className="space-y-4">
-                      {tabResults[activeTab].result.third_party_eval?.scanii && (
-                        <div className={`p-4 rounded-lg ${getColorClass(tabResults[activeTab].result.third_party_eval.scanii.status)} border`}>
-                          <p className="text-md font-semibold">Scanii: <span className="font-bold">{tabResults[activeTab].result.third_party_eval.scanii.status}</span></p>
-                          <p className="text-sm">{tabResults[activeTab].result.third_party_eval.scanii.details || <span className="italic text-gray-400">None</span>}</p>
+                      )}
+                      {activeAnalysisTab === 'received' && tabResults[activeTab].result.email_details && (
+                        <div className="p-4 bg-gray-50 rounded-lg border">
+                          <h4 className="text-lg font-semibold mb-2">Received Lines</h4>
+                          <div className="space-y-4">
+                            {tabResults[activeTab].result.email_details.received_lines.map((hop, index) => (
+                              <div key={index} className="p-2 border rounded">
+                                <p><strong>{hop.Hop}:</strong></p>
+                                <ul className="list-disc pl-5">
+                                  <li><strong>Timestamp:</strong> {hop.Timestamp || <span className="italic text-gray-400">None</span>}</li>
+                                  <li><strong>Received From:</strong> {hop.ReceivedFrom || <span className="italic text-gray-400">None</span>}</li>
+                                  <li><strong>Received By:</strong> {hop.ReceivedBy || <span className="italic text-gray-400">None</span>}</li>
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       )}
-                    </div>
-                  </div>
-                )}
+                      {activeAnalysisTab === 'x_headers' && tabResults[activeTab].result.email_details && (
+                        <div className="p-4 bg-gray-50 rounded-lg border">
+                          <h4 className="text-lg font-semibold mb-2">X-Headers</h4>
+                          <ul className="list-disc pl-5">
+                            <li><strong>X-Priority:</strong> {tabResults[activeTab].result.email_details.x_headers["x-priority"] || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>X-MSMail-Priority:</strong> {tabResults[activeTab].result.email_details.x_headers["x-msmail-priority"] || <span className="italic text-gray-400">None</span>}</li>
+                            <li><strong>X-OriginalArrivalTime:</strong> {tabResults[activeTab].result.email_details.x_headers["x-originalarrivaltime"] || <span className="italic text-gray-400">None</span>}</li>
+                          </ul>
+                        </div>
+                      )}
+                      {activeAnalysisTab === 'security' && tabResults[activeTab].result.email_details && (
+                        <div className="p-4 bg-gray-50 rounded-lg border">
+                          <h4 className="text-lg font-semibold mb-2">Security</h4>
+                          <div className="ml-4">
+                            <h5 className="font-semibold">SPF</h5>
+                            <ul className="list-disc pl-5">
+                              <li><strong>Result:</strong> {tabResults[activeTab].result.email_details.security.SPF.Result || <span className="italic text-gray-400">None</span>}</li>
+                              <li><strong>Originating IP:</strong> {tabResults[activeTab].result.email_details.security.SPF.OriginatingIP || <span className="italic text-gray-400">None</span>}</li>
+                              <li><strong>rDNS:</strong> {tabResults[activeTab].result.email_details.security.SPF.rDNS || <span className="italic text-gray-400">None</span>}</li>
+                              <li><strong>Return-Path Domain:</strong> {tabResults[activeTab].result.email_details.security.SPF.ReturnPathDomain || <span className="italic text-gray-400">None</span>}</li>
+                              <li><strong>SPF Record:</strong> {tabResults[activeTab].result.email_details.security.SPF.SPFRecord || <span className="italic text-gray-400">None</span>}</li>
+                            </ul>
+                            <h5 className="font-semibold mt-2">DKIM</h5>
+                            <ul className="list-disc pl-5">
+                              <li><strong>Result:</strong> {tabResults[activeTab].result.email_details.security.DKIM.Result || <span className="italic text-gray-400">None</span>}</li>
+                              <li><strong>Verifications:</strong> {tabResults[activeTab].result.email_details.security.DKIM.Verifications || <span className="italic text-gray-400">None</span>}</li>
+                            </ul>
+                            <h5 className="font-semibold mt-2">DMARC</h5>
+                            <ul className="list-disc pl-5">
+                              <li><strong>Result:</strong> {tabResults[activeTab].result.email_details.security.DMARC.Result || <span className="italic text-gray-400">None</span>}</li>
+                              <li><strong>From Domain:</strong> {tabResults[activeTab].result.email_details.security.DMARC.FromDomain || <span className="italic text-gray-400">None</span>}</li>
+                            </ul>
+                          </div>
+                        </div>
+                      )}
 
-                {/* Phát hiện URL */}
-                {activeTab === 'email' && tabResults[activeTab].result.email_details && (
-                  <div className="mt-4 p-4 bg-gray-50 rounded-lg border">
-                    {tabResults[activeTab].result.email_details.urls === null || 
-                    tabResults[activeTab].result.email_details.urls.length === 0 ? (
-                      <p className="text-md font-semibold">Message URLs: None</p>
-                    ) : (
-                      <div>
-                        <p className="text-md font-semibold mb-2">Phát hiện URL trong email:</p>
-                        <ul className="space-y-2">
-                          {tabResults[activeTab].result.email_details.urls.map((url, index) => (
-                            <li key={index} className="flex items-center gap-2">
-                              <a 
-                                href={`https://${url.Domain}`} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="text-blue-600 hover:underline"
-                              >
-                                https://{url.Domain}
-                              </a>
-                              <button
-                                onClick={() => handleSwitchToURLCheck(url.Domain)}
-                                className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm relative group"
-                                title="Chuyển sang kiểm tra URL"
-                              >
-                                Kiểm tra
-                                <span className="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -top-8 left-1/2 transform -translate-x-1/2">
-                                  Chuyển sang kiểm tra URL
-                                </span>
-                              </button>
-                            </li>
-                          ))}
-                        </ul>
+                      {tabResults[activeTab].result.email_details && (
+                        <div className="mt-4 p-4 bg-gray-50 rounded-lg border">
+                          {tabResults[activeTab].result.email_details.urls === null ||
+                          tabResults[activeTab].result.email_details.urls.length === 0 ? (
+                            <p className="text-md font-semibold">Không phát hiện URL trong email</p>
+                          ) : (
+                            <div>
+                              <p className="text-md font-semibold mb-2">Phát hiện URL trong email:</p>
+                              <ul className="space-y-2">
+                                {tabResults[activeTab].result.email_details.urls.map((url, index) => (
+                                  <li key={index} className="flex items-center gap-2">
+                                    <a
+                                      href={`https://${url.Domain}`}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="text-blue-600 hover:underline"
+                                    >
+                                      https://{url.Domain}
+                                    </a>
+                                    <button
+                                      onClick={() => handleSwitchToURLCheck(url.Domain)}
+                                      className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 text-sm relative group"
+                                      title="Chuyển sang kiểm tra URL"
+                                    >
+                                      Kiểm tra
+                                      <span className="absolute hidden group-hover:block bg-gray-800 text-white text-xs rounded py-1 px-2 -top-8 left-1/2 transform -translate-x-1/2">
+                                        Chuyển sang kiểm tra URL
+                                      </span>
+                                    </button>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  {(activeTab === 'url' || activeTab === 'file' || activeTab === 'email') && (
+                    <div className="mt-4">
+                      <h3 className="text-xl font-semibold text-gray-800 mb-4">Đánh giá từ bên thứ ba</h3>
+                      <div className="space-y-4">
+                        {tabResults[activeTab].result.third_party_eval?.virusTotal && (
+                          <div className={`p-4 rounded-lg ${getColorClass(tabResults[activeTab].result.third_party_eval.virusTotal.status)} border`}>
+                            <p className="text-md font-semibold">
+                              VirusTotal: <span className="font-bold">{tabResults[activeTab].result.third_party_eval.virusTotal.status}</span>
+                            </p>
+                            <p className="text-sm">{tabResults[activeTab].result.third_party_eval.virusTotal.details || <span className="italic text-gray-400">None</span>}</p>
+                          </div>
+                        )}
+                        {tabResults[activeTab].result.third_party_eval?.googleSafeBrowsing && (
+                          <div className={`p-4 rounded-lg ${getColorClass(tabResults[activeTab].result.third_party_eval.googleSafeBrowsing.status)} border`}>
+                            <p className="text-md font-semibold">
+                              Google Safe Browsing: <span className="font-bold">{tabResults[activeTab].result.third_party_eval.googleSafeBrowsing.status}</span>
+                            </p>
+                            <p className="text-sm">{tabResults[activeTab].result.third_party_eval.googleSafeBrowsing.details || <span className="italic text-gray-400">None</span>}</p>
+                          </div>
+                        )}
+                        {tabResults[activeTab].result.third_party_eval?.scanii && (
+                          <div className={`p-4 rounded-lg ${getColorClass(tabResults[activeTab].result.third_party_eval.scanii.status)} border`}>
+                            <p className="text-md font-semibold">
+                              Scanii: <span className="font-bold">{tabResults[activeTab].result.third_party_eval.scanii.status}</span>
+                            </p>
+                            <p className="text-sm">{tabResults[activeTab].result.third_party_eval.scanii.details || <span className="italic text-gray-400">None</span>}</p>
+                          </div>
+                        )}
                       </div>
-                    )}
-                  </div>
-                )}
-              </div>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Right Side: Results and Features */}
-              <div className="w-1/2 p-4 bg-white border rounded-lg shadow">
+              <div className={`${activeTab !== 'image' ? 'w-3/5' : 'w-full'} p-4 bg-white border rounded-lg shadow`}>
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Kết quả phân tích</h2>
                 {tabResults[activeTab].result.qr_results ? (
                   <div>
@@ -265,9 +307,7 @@ const App = () => {
                 ) : activeTab === 'email' && tabResults[activeTab].result.email_details ? (
                   <div>
                     <div className={`p-4 rounded-lg mb-6 ${getColorClass(tabResults[activeTab].result.result)} border`}>
-                      <p className="text-lg font-semibold">Phân loại: <span className="font-bold">
-                        {tabResults[activeTab].result.result}
-                      </span></p>
+                      <p className="text-lg font-semibold">Phân loại: <span className="font-bold">{tabResults[activeTab].result.result}</span></p>
                       <div className="mt-3">
                         <p className="text-md">Xác suất Phishing: <span className="font-bold text-lg">{tabResults[activeTab].result.rf_confidence || 0}%</span></p>
                         <div className="w-full bg-gray-200 rounded-full h-3">
@@ -285,8 +325,7 @@ const App = () => {
                 ) : (
                   <div className={`p-4 rounded-lg mb-6 ${getColorClass(activeTab === 'file' ? tabResults[activeTab].result.result : tabResults[activeTab].result.prediction || tabResults[activeTab].result.result)} border`}>
                     <p className="text-lg font-semibold">Phân loại: <span className="font-bold">
-                      {activeTab === 'file' ? tabResults[activeTab].result.result : 
-                       tabResults[activeTab].result.prediction || tabResults[activeTab].result.result}
+                      {activeTab === 'file' ? tabResults[activeTab].result.result : tabResults[activeTab].result.prediction || tabResults[activeTab].result.result}
                     </span></p>
                     <div className="mt-3">
                       <p className="text-md">Xác suất Phishing: <span className="font-bold text-lg">{tabResults[activeTab].result.rf_confidence || 0}%</span></p>
@@ -312,7 +351,6 @@ const App = () => {
   );
 };
 
-// Assuming getColorClass is defined here for consistency
 const getColorClass = (status) => {
   if (!status || typeof status !== 'string') return 'bg-gray-100 text-gray-700';
 
@@ -330,10 +368,9 @@ const getColorClass = (status) => {
   }
 };
 
-// CSS inline cho skeleton loading với màu nhẹ hơn và hiệu ứng chuyển đổi
 const styles = `
   .loading {
-    background: #d3d3d3 !important; /* Màu xám nhạt hơn */
+    background: #d3d3d3 !important;
     position: relative;
     overflow: hidden;
     opacity: 1;
@@ -346,7 +383,7 @@ const styles = `
     position: absolute;
     top: 0;
     left: 0;
-    background: linear-gradient(to right, rgba(240, 240, 240, 0.7), transparent) !important; /* Gradient nhẹ nhàng hơn */
+    background: linear-gradient(to right, rgba(240, 240, 240, 0.7), transparent) !important;
     animation: loadingWave linear 1s infinite;
     transform: translateX(-100%);
   }
@@ -368,7 +405,6 @@ const styles = `
   }
 `;
 
-// Thêm style vào document
 const styleSheet = document.createElement('style');
 styleSheet.textContent = styles;
 document.head.appendChild(styleSheet);
