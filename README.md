@@ -51,7 +51,7 @@ npm start
 3, Hình ảnh website
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a6d18659-7eda-4445-a9dc-a784e5984267" 
-       alt="PhishingAI Extension Preview" width="300">
+       alt="PhishingAI Extension Preview" width="700">
 </p>
 
 ## Usage
@@ -65,7 +65,7 @@ npm start
 ### Kiểm tra URL/Ảnh/PDF/Email Phishing
 <p align="center">
   <img src="https://github.com/user-attachments/assets/4e7b3e18-1058-4283-be1b-60fdb327a56a" 
-       alt="PhishingAI Extension Preview" width="300">
+       alt="PhishingAI Extension Preview" width="700">
 </p>
 
 ### Chrome Extension (Chưa được phát hành)
