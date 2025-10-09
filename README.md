@@ -63,9 +63,11 @@ npm start
 <img width="855" height="787" alt="image" src="https://github.com/user-attachments/assets/4e7b3e18-1058-4283-be1b-60fdb327a56a" />
 
 ### Chrome Extension (Chưa được phát hành)
-<div style="text-align:center;">
-  <img src="https://github.com/user-attachments/assets/24628320-c83d-4665-8c82-ad65c6971e39" alt="PhishingAI Extension Preview" width="300">
-</div>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/24628320-c83d-4665-8c82-ad65c6971e39" 
+       alt="PhishingAI Extension Preview" width="300">
+</p>
+
 
 ## Models and Performance
 
