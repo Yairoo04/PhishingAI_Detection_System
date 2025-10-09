@@ -49,7 +49,7 @@ npm install
 npm start
 ```
 3, Hình ảnh website
-![image](https://hackmd.io/_uploads/H1quFUBpge.png)
+<img width="773" height="346" alt="image" src="https://github.com/user-attachments/assets/a6d18659-7eda-4445-a9dc-a784e5984267" />
 
 ## Usage
 
@@ -60,12 +60,11 @@ npm start
 - Ví dụ: Upload email nghi ngờ → Hệ thống phân tích header/metadata → Trả về % phishing.
 
 ### Kiểm tra URL/Ảnh/PDF/Email Phishing
-![image](https://hackmd.io/_uploads/BJU1tLHalg.png)
+<img width="855" height="787" alt="image" src="https://github.com/user-attachments/assets/4e7b3e18-1058-4283-be1b-60fdb327a56a" />
 
 ### Chrome Extension (Chưa được phát hành)
-
 <div style="text-align:center;">
-  <img src="https://hackmd.io/_uploads/S1Mw3USTee.png" alt="PhishingAI Extension Preview" width="300">
+  <img src="https://github.com/user-attachments/assets/24628320-c83d-4665-8c82-ad65c6971e39" alt="PhishingAI Extension Preview" width="300">
 </div>
 
 ## Models and Performance
