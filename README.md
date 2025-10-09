@@ -57,7 +57,7 @@ npm start
 ## Usage
 
 ### Web App
-1. Truy cập localhost:3000 (hoặc port frontend).
+1. Truy cập localhost:5001 (hoặc port frontend).
 2. **Kiểm tra URL**: Nhập URL vào input, nhấn "Check URL". Kết quả hiển thị % phishing và kết luận (Phishing/Legitimate).
 3. **Kiểm tra File**: Upload file (.eml, .pdf, .png/.jpg) qua phần "Check File". Nhấn "Check File" để xem preview và kết quả.
 - Ví dụ: Upload email nghi ngờ → Hệ thống phân tích header/metadata → Trả về % phishing.
