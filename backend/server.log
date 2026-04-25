@@ -61,3 +61,51 @@
 2025-06-25 14:40:26,172 - INFO - 192.168.1.16 - - [25/Jun/2025 14:40:26] "[35m[1mPOST /api/image/predict HTTP/1.1[0m" 500 -
 2025-06-25 14:40:36,340 - ERROR - Lỗi không xác định khi xử lý tệp .eml phishing_email_523.eml: [Errno 2] No such file or directory: './Uploads\\phishing_email_523.eml'
 2025-06-25 14:40:36,340 - INFO - 192.168.1.16 - - [25/Jun/2025 14:40:36] "[35m[1mPOST /api/email/predict HTTP/1.1[0m" 500 -
+2026-02-02 10:51:30,599 - INFO - Starting Flask server on 0.0.0.0:5001 (debug mode)
+2026-02-02 10:51:30,667 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.194:5001
+2026-02-02 10:51:30,667 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-02 10:51:30,671 - INFO -  * Restarting with stat
+2026-02-02 10:51:36,461 - INFO - Starting Flask server on 0.0.0.0:5001 (debug mode)
+2026-02-02 10:51:36,467 - WARNING -  * Debugger is active!
+2026-02-02 10:51:36,471 - INFO -  * Debugger PIN: 104-363-038
+2026-02-02 10:51:36,563 - INFO - 127.0.0.1 - - [02/Feb/2026 10:51:36] "GET / HTTP/1.1" 200 -
+2026-02-02 10:51:36,597 - INFO - 127.0.0.1 - - [02/Feb/2026 10:51:36] "GET /static/js/main.4607de57.js HTTP/1.1" 200 -
+2026-02-02 10:51:36,599 - INFO - 127.0.0.1 - - [02/Feb/2026 10:51:36] "GET /static/css/main.a18838e1.css HTTP/1.1" 200 -
+2026-02-02 10:51:36,938 - INFO - 127.0.0.1 - - [02/Feb/2026 10:51:36] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2026-02-02 10:51:38,120 - INFO - 127.0.0.1 - - [02/Feb/2026 10:51:38] "GET /static/media/boxicons.df635aaf04cd75132f62.woff2 HTTP/1.1" 200 -
+2026-02-02 10:52:02,725 - INFO - 127.0.0.1 - - [02/Feb/2026 10:52:02] "[36mGET / HTTP/1.1[0m" 304 -
+2026-02-02 10:52:02,755 - INFO - 127.0.0.1 - - [02/Feb/2026 10:52:02] "[36mGET /static/js/main.4607de57.js HTTP/1.1[0m" 304 -
+2026-02-02 10:52:02,756 - INFO - 127.0.0.1 - - [02/Feb/2026 10:52:02] "[36mGET /static/css/main.a18838e1.css HTTP/1.1[0m" 304 -
+2026-02-02 10:52:04,048 - INFO - 127.0.0.1 - - [02/Feb/2026 10:52:04] "[36mGET /static/media/boxicons.df635aaf04cd75132f62.woff2 HTTP/1.1[0m" 304 -
+2026-02-02 10:52:06,525 - INFO - 127.0.0.1 - - [02/Feb/2026 10:52:06] "[36mGET / HTTP/1.1[0m" 304 -
+2026-02-02 10:52:06,551 - INFO - 127.0.0.1 - - [02/Feb/2026 10:52:06] "[36mGET /static/js/main.4607de57.js HTTP/1.1[0m" 304 -
+2026-02-02 10:52:06,552 - INFO - 127.0.0.1 - - [02/Feb/2026 10:52:06] "[36mGET /static/css/main.a18838e1.css HTTP/1.1[0m" 304 -
+2026-02-02 10:53:58,074 - INFO - Starting Flask server on 0.0.0.0:5001 (debug mode)
+2026-02-02 10:53:58,089 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.1.194:5001
+2026-02-02 10:53:58,090 - INFO - [33mPress CTRL+C to quit[0m
+2026-02-02 10:53:58,090 - INFO -  * Restarting with stat
+2026-02-02 10:54:03,422 - INFO - Starting Flask server on 0.0.0.0:5001 (debug mode)
+2026-02-02 10:54:03,428 - WARNING -  * Debugger is active!
+2026-02-02 10:54:03,431 - INFO -  * Debugger PIN: 104-363-038
+2026-02-02 10:54:03,510 - INFO - 127.0.0.1 - - [02/Feb/2026 10:54:03] "GET / HTTP/1.1" 200 -
+2026-02-02 10:54:03,549 - INFO - 127.0.0.1 - - [02/Feb/2026 10:54:03] "GET /static/js/main.cfaa22bc.js HTTP/1.1" 200 -
+2026-02-02 10:54:03,550 - INFO - 127.0.0.1 - - [02/Feb/2026 10:54:03] "GET /static/css/main.a18838e1.css HTTP/1.1" 200 -
+2026-02-02 10:54:04,946 - INFO - 127.0.0.1 - - [02/Feb/2026 10:54:04] "GET /static/media/boxicons.df635aaf04cd75132f62.woff2 HTTP/1.1" 200 -
+2026-02-02 10:55:03,931 - ERROR - Unexpected error processing URL: Stacking model files not found for url: {'base': '../models/stacking_url\\stacking_base_models_url.pkl', 'meta': '../models/stacking_url\\stacking_meta_xgb_url.pkl'}
+Traceback (most recent call last):
+  File "D:\3. PTIT\2. NCKH\4. NCKH_Phishing\PhishingAI_Detection_System\backend\routes\url.py", line 151, in predict_url_endpoint
+    class_pred, proba_phishing = predict_stacking(df, "url")
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\3. PTIT\2. NCKH\4. NCKH_Phishing\PhishingAI_Detection_System\backend\routes\url.py", line 58, in predict_stacking
+    models = load_stacking(model_type)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\3. PTIT\2. NCKH\4. NCKH_Phishing\PhishingAI_Detection_System\backend\routes\url.py", line 38, in load_stacking
+    raise FileNotFoundError(f"Stacking model files not found for {model_type}: {cfg}")
+FileNotFoundError: Stacking model files not found for url: {'base': '../models/stacking_url\\stacking_base_models_url.pkl', 'meta': '../models/stacking_url\\stacking_meta_xgb_url.pkl'}
+2026-02-02 10:55:03,932 - INFO - 127.0.0.1 - - [02/Feb/2026 10:55:03] "[35m[1mPOST /api/url/predict HTTP/1.1[0m" 500 -

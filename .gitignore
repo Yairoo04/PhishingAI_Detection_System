@@ -1,7 +1,126 @@
-# Bỏ qua thư mục chứa các gói đã cài
-node_modules/
-# Ignore large dataset and model files
-dataset_URL/phishing_URL.csv
-models/random_forest_URL.pkl
-# Bỏ qua virtual environment
+# ============================================================
+# Python
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+.Python
+
+# ============================================================
+# Virtual Environments
+# ============================================================
 venv/
+env/
+.env
+.venv/
+ENV/
+env.bak/
+
+# ============================================================
+# Environment / Secrets
+# ============================================================
+.env
+.env.local
+.env.production
+*.secret
+
+# ============================================================
+# Node / Frontend
+# ============================================================
+node_modules/
+frontend/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+frontend/build_debug.log
+frontend/build_error.log
+frontend/build_error_ascii.log
+frontend/build_log.txt
+frontend/build_log_final.txt
+frontend/error_extract.txt
+frontend/file_list.txt
+
+# ============================================================
+# Build output (keep frontend/build in repo for Flask serving)
+# Uncomment below if you build in CI/CD instead
+# ============================================================
+# frontend/build/
+
+# ============================================================
+# Logs
+# ============================================================
+*.log
+server.log
+backend/server.log
+backend/benchmark_output.txt
+backend/benchmark_utf8.txt
+
+# ============================================================
+# Large Model Weights (> 100 MB — use Git LFS or exclude)
+# ============================================================
+models/random_forest_URL.pkl
+models/efficientnetv2m_phishing.keras
+models/efficientnetv2m_phishing_final.keras
+models/cnn_phishing_image.keras.bak
+models/stacking_base_models_url copy.pkl
+models/ copy/
+
+# Keep smaller essential models in repo (< 50 MB each):
+# models/random_forest_email.pkl
+# models/random_forest_file.pkl
+# models/cnn_phishing_image.keras
+
+# ============================================================
+# Datasets (large — do NOT commit raw datasets)
+# ============================================================
+dataset_URL/
+dataset_Email/
+dataset_File/
+dataset_Image/
+*.csv
+*.parquet
+
+# ============================================================
+# Upload temp files
+# ============================================================
+Uploads/
+uploads/
+*.eml
+*.tmp
+
+# ============================================================
+# IDE / OS
+# ============================================================
+.DS_Store
+Thumbs.db
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+*~
+
+# ============================================================
+# Compressed archives
+# ============================================================
+*.rar
+*.zip
+*.tar.gz
+*.7z
+
+# ============================================================
+# KEEP — Important files that must stay tracked
+# ============================================================
+# README.md                  ← always tracked
+# docs/images/               ← screenshots for README
+# .env.example               ← template (no secrets)
+# requirements.txt
+ICCIES.tex
+ICCIES_2026___Phishing__Camera_Ready_.pdf
+PhishingDetector/
+.gitignore
+models copy/
+models/
+report.txt
+phishing_system_report.md
